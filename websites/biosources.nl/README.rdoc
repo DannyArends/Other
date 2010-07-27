@@ -1,0 +1,7 @@
+== DESCRIPTION:
+Sourcecode of http://www.biosources.nl
+Made by By Danny Arends, contact me with any suggestions http://Danny.webdez.nl or Danny.Arends@Gmail.com
+
+== LICENSE:
+
+Copyright © Danny Arends 2009, http://www.biosources.nl

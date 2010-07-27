@@ -1,0 +1,11 @@
+<h2>Welcome to BioSources.nl</h2>
+Welcome to biosources.nl, a small webplatform that aims to help researchers in the field of biology. The aim of the webplatform is to provide help with <a href="http://www.biosources.nl/index.cgi?Page=4) Bioinformatics">bioinformatics</a> &amp; computational biology projects by supporting &amp; supplying researchers with the following products:
+<ul><li>Freelance programming projects</li><li>Adapting Sourcecodes</li><li>Biological Data analysis</li><li>Training &amp; feedback</li><li>A pair of extra eyes</li></ul>So look around the website to get an idea of what we can do for u. And feel free to <a href="http://www.biosources.nl/index.cgi?Page=6) Contact">contact</a> with any questions
+&nbsp;
+Danny Arends - Webmaster <a href='http://www.biosources.nl/'>Biosources.nl</a> 
+<a href="http://github.com/DannyArends/">My Github repository with code-examples</a>
+<a href='http://Danny.webdez.nl'>My homepage</a>
+Danny.Arends[at]Gmail.com
+
+&nbsp;
+Ps. Don't forget to check out the <a href="http://www.biosources.nl/index.cgi?Page=7) Links">links section</a> with various links to other usefull websites

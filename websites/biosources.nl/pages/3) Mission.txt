@@ -1,0 +1,6 @@
+<h2>BioSources.nl mission statement</h2>
+Collaborate with other researchers to develop new bioinformatics tools & analysis, and providing an infrastructure for a 'shared work environment' for bioinformaticians. Currently we only provide some basic background information on bioinformatics, and links to other sites dedicated to bioinformatic research.
+<h3>todo's</h3>
+User signup, so people can signup (Newsletter & Account@biosources.nl)
+Forum application, to connect bioinformaticians from all over the world
+Shared working environment for working at sourcecodes, to cut down development time of applications

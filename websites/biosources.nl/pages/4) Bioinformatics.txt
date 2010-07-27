@@ -1,0 +1,65 @@
+<h2>Introduction into Bioinformatics</h2>
+This page is always under construction, please check out the <a href="http://www.biosources.nl/index.cgi?Page=7) Links">links section</a> for some starting points in bioinformatics research.
+<h3>First some definitions</h3>
+<b>Bioinformatics</b>: "Bioinformatics is the application of information technology to the field of molecular biology. Bioinformatics entails the creation and advancement of databases, algorithms, computational and statistical techniques, and theory to solve formal and practical problems arising from the management and analysis of biological data."
+<b>Computational Biology</b>: "Computational biology is an interdisciplinary field that applies techniques from computer science, applied mathematics and statistics to address biological problems"
+<b>Cybernetics</b>: "Cybernetics is the interdisciplinary study of the structure of regulatory systems. Cybernetics is related to control theory and systems theory."
+&nbsp;
+A short history of genetics, this overview is made possible by wikipedia:
+
+<h3>Classical genetics</h3>
+1865 Gregor Mendel's paper, Experiments on Plant Hybridization.
+1869 Friedrich Miescher discovers a weak acid in the nuclei of cells (DNA).
+1885 Walther Flemming et al. elucidate chromosome distribution during cell division.
+1889 Hugo de Vries postulates that "inheritance of specific traits in organisms comes in particles" (genes).
+1903 Walter Sutton hypothesizes that chromosomes, which segregate in a Mendelian fashion, are hereditary units.
+1905 William Bateson coins the term "genetics".
+1908 Hardy-Weinberg law derived.
+1910 Thomas Hunt Morgan shows that genes reside on chromosomes.
+1913 Alfred Sturtevant makes the first genetic map of a chromosome.
+1913 Gene maps show chromosomes containing linear arranged genes.
+1918 Ronald Fisher publishes "The Correlation Between Relatives on the Supposition of Mendelian Inheritance"
+1928 Frederick Griffith discovers that DNA from dead bacteria can be incorporated into live bacteria.
+1931 Crossing over is identified as the cause of recombination.
+1933 Jean Brachet shows DNA is found in chromosomes and that RNA is present in the cytoplasm of cells.
+1941 Edward Lawrie Tatum and George Wells Beadle show that genes code for proteins.
+
+<h3>The DNA era</h3>
+1944 Oswald Theodore Avery, Colin McLeod and Maclyn McCarty isolate DNA as the genetic material.
+1950 Erwin Chargaff discovers general rules about the four nucleotides.
+1950 Barbara McClintock discovers transposons in maize.
+1952 The Hershey-Chase experiment proves the genetic information of all organisms to be DNA
+1953 DNA structure is resolved to be a double helix by James D. Watson and Francis Crick
+1956 Joe Hin Tjio and Albert Levan established the correct chromosome number in humans to be 46
+1958 The Meselson-Stahl experiment demonstrates that DNA is semiconservatively replicated
+1961 Discovery of the genetic code, (M Nirenberg, Har Gobind Khorana, S Brenner & Francis Crick)
+1964 Howard Temin showed using RNA viruses that the direction of DNA to RNA transcription can be reversed
+1970 Restriction enzymes were discovered enabling scientists to cut and paste DNA
+
+<h3>The genomics era</h3>
+1972 Walter Fiers and his team First discovery of the sequence of a gene (MS2 coat protein).
+1976 Walter Fiers and his team determine the complete nucleotide-sequence of bacteriophage MS2-RNA
+1977 DNA is sequenced for the first time by Fred Sanger, Walter Gilbert, and Allan Maxam working independently.
+1983 Kary Banks Mullis discovers the polymerase chain reaction enabling the easy amplification of DNA
+1989 Francis Collins and Lap-Chee Tsui discover that defects in the gene CFTR protein cause cystic fibrosis.
+1995 The genome of <i>H. influenzae</i> is the first genome of a free living organism to be sequenced
+1996 Saccharomyces cerevisiae is the first eukaryote genome sequence to be released.
+1998 The first genome sequence for a multicellular eukaryote, <i>C elegans</i>, is released.
+2001 First draft sequences of the human genome (Human Genome Project and Celera Genomics).
+2003 Successful completion of Human Genome Project with 99% of the genome sequenced to a 99.99% accuracy
+
+<h3>Current fields of research</h3>
+Sequence analysis 
+(Functional) Genome annotation 
+Computational evolutionary biology 
+Measuring biodiversity 
+Analysis of gene & protein expression 
+Inference of genetic regulation 
+Analysis of mutations in cancer 
+Prediction of protein structure 
+Comparative genomics 
+Modeling biological systems
+High-throughput (image) analysis 
+Protein-protein docking 
+Software and tools development 
+Web services in bioinformatics 

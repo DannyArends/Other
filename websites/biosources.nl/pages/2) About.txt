@@ -1,0 +1,6 @@
+<h2>About BioSources.nl</h2>
+- Shoemaker remain at your last - Dutch Figure of Speach (translated)
+<h3>History</h3>
+Founded after an idea of Danny Arends in 2009, biosources aims to help biologists and researchers in the life-sciences solving questions. Every person has his own specialty, and working together more difficult questions can be solved.
+<h3>Current state</h3>
+Currently development of the webplatform is just a call for collaboration to help develop the idea further.

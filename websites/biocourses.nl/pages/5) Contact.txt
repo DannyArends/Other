@@ -1,0 +1,5 @@
+<h2>Contact BioCourses.nl</h2>
+<hr>
+Webmaster: Danny Arends
+Danny.Arends[at]Gmail.com
+<a href='Http://Danny.webdez.nl'>Website</a>

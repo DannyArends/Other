@@ -1,0 +1,22 @@
+<h2>Sourcecode</h2>
+"In computer science, source code is any collection of statements or declarations written in some human-readable computer programming language. Source code allows the programmer to communicate with the computer using a reserved number of instructions. " - <a href="http://www.wikipedia.org">wikipedia</a>
+
+With this in mind the aim of biosource.nl is to provide biologists & researchers with tailormade software packages to help answer their questions.
+<h3>Our expertises</h3>
+Novel opensource solutions to your biological problems
+Clean and readable sourcecode
+<a href="http://github.com/DannyArends/">My Github repository with code-examples</a>
+
+<h3>Links to programming languages</h3>
+<a href="http://www.perl.com">Perl programming language</a>
+<a href="http://www.cs.cf.ac.uk/Dave/C/CE.html">C programming language</a>
+<a href="http://www.r-project.org/">The R project</a>
+<a href="http://java.sun.com">Java programming language</a>
+<h3>Links to general opensource repositories</h3>
+<a href="http://sourceforge.net/">SourceForge</a>  - Open Source Software
+<a href="http://www.netlib.org/">NetLib</a> - Netlib is a collection of mathematical software, papers, and databases
+<a href="http://freshmeat.net/">Freshmeat</a> - Maintains the Web's largest index of Unix and cross-platform software
+<a href="http://code.google.com/">Google code</a> - Don't do evil
+<h3>Links to biological packages & repositories</h3>
+<a href="http://www.bioperl.org/">BioPerl</a> - Packages for bioinformatics in the Perl language
+<a href="http://cran.nedmirror.nl/web/packages/index.html">CRAN Packages</a> - Packages for bioinformatics in the R language

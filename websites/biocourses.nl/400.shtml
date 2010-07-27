@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+
+<html>
+	<head>
+	<title>Biosources.nl - 400 Bad Request Error</title>
+		<link href='theme/theme.css' type='text/css' rel='stylesheet'>
+		<meta name='Keywords' content='Nano innovation Web Bio Informatics Genetical Genomics QTL RF Groningen source code programming biology biosources' >
+		<meta name='Description' content='Biosources.nl connecting people working in the researchs fields of biology and informatics.' >
+		<meta name='verify-v1' content='c9nq7EWDWyjiRn+ChHRHtON7G9cWqZ7rr5P9B85wHX4=' />
+		<meta name='Author' content='Danny Arends' >
+		<meta name='Robots' content='INDEX,FOLLOW' >
+
+		<script type='text/javascript'></script>
+		<script type='text/javascript' src='jQuery/jquery.min.js'></script>
+		<script type='text/javascript' src='jQuery/jquery.cycle.min.js'></script>
+		<script type='text/javascript'>
+			$(document).ready(function() {
+				$('.slideshow').cycle({
+				fx: 'fade'
+				});
+			});
+		</script>
+	</head>
+<body>
+<form method='post' ACTION=''>
+<div align='middle'>
+
+<br/>
+<table width='1024px' height='600px'>
+<tr><td class='span'>&nbsp;</td><td colspan='3' class='top'>
+<div class='slideshow'>
+<img src='images/bio_top1.png' width='1024'/>
+<img src='images/bio_top2.png' width='1024'/>
+<img src='images/bio_top3.png' width='1024'/>
+<img src='images/bio_top4.png' width='1024'/>
+<img src='images/bio_top5.png' width='1024'/>
+</div>
+</td><td class='span'>&nbsp;</td></tr>
+<tr><td class='span'></td>
+<td class='navi'>
+<div align='right'>
+<a href='index.cgi?Page=1) Index' class='SButton'>1) Index</a><br/>
+<a href='index.cgi?Page=2) About' class='SButton'>2) About</a><br/>
+
+<a href='index.cgi?Page=3) Mission' class='SButton'>3) Mission</a><br/>
+<a href='index.cgi?Page=4) Bioinformatics' class='SButton'>4) Bioinformatics</a><br/>
+<a href='index.cgi?Page=5) Sourcecode' class='SButton'>5) Sourcecode</a><br/>
+<a href='index.cgi?Page=6) Contact' class='SButton'>6) Contact</a><br/>
+<a href='index.cgi?Page=7) Links' class='SButton'>7) Links</a><br/>
+</div>
+
+</td><td class='main'>
+<font color='red'>
+<h2>Bad Request</h2>
+There was an error in your request.
+<HR>
+<I><!--#echo var="HTTP_HOST" --></I>
+</td>
+<td class='Rnavi'>
+<div align='right'>
+
+<a href='index.cgi?Page=Disclaimer' class='SButton'>Disclaimer</a><br/>
+<a href='index.cgi?Page=FAQ' class='SButton'>FAQ</a><br/>
+<a href='index.cgi?Page=Mission' class='SButton'>Mission</a><br/>
+</div>
+
+</td><td class='span'></td></tr>
+<tr><td class='span'></td><td colspan='2'>&nbsp;</td><td class='foot'>
+<font size='1'>Visitor IP: 80.101.131.18<br>
+Visitor Hostname: a80-101-131-18.adsl.xs4all.nl<br></font>
+
+</td><td class='span'></td></tr>
+<tr><td class='span' colspan='5'><font size='1'>Page generated in: 0.011951 Sec<br></font></td></tr>
+
+</table>
+</div>
+</form>
+</body>
+</html>

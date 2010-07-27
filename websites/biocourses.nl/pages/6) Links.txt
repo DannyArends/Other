@@ -1,0 +1,34 @@
+<h2>External links</h2>
+<hr>
+To give some starting points in bioinformatics analysis we offer the following links.
+
+<h3>Programming languages & their biological packages</h3>
+<a href="http://www.perl.com">Perl programming language</a>
+<a href="http://www.cs.cf.ac.uk/Dave/C/CE.html">C programming language</a>
+<a href="http://www.r-project.org/">The R project</a>
+<a href="http://java.sun.com">Java programming language</a>
+
+<h3>General Starting points</h3>
+<a href="http://www.ncbi.nlm.nih.gov/">National Center for Biotechnology Information</a>
+<a href="http://www.ncbi.nlm.nih.gov/Entrez/">Entrez cross-database search</a>
+
+<h3>DNA/RNA analysis</h3>
+<a href="http://www.ncbi.nlm.nih.gov/Tools/">Tools available at NCBI</a>
+<a href="http://www.ensembl.org/index.html">Ensemble database</a>
+
+<h3>PROTEIN analysis</h3>
+<a href="http://www.expasy.org/">ExPASy molecular biology server</a>
+
+<h3>METABOLITE analysis</h3>
+
+<h3>PATHWAY</h3>
+<a href="http://www.genome.jp/kegg/">KEGG: Kyoto Encyclopedia of Genes and Genomes</a>
+
+<h3>TOP Links</h3>
+<a href="http://www.wikipedia.org">Wikipedia</a>
+<a href="http://www.sourceforge.com">Sourceforge</a>
+<a href="http://www.github.com">Github</a>
+
+<h3>Other</h3>
+<a href="http://www.biosources.nl">Biosources.nl</a>
+<a href="http://www.webdez.nl">WebdeZ - Integrated</a>
