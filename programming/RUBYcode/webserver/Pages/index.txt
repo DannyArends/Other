@@ -1,0 +1,4 @@
+This is some example of using ruby as a webservice using standard socket implementation available in ruby
+<img src="Images/favicon.png" alt="PNG test" width='100',height='100'>
+<img src="Images/ik.jpg" alt="JPEG test" width='100',height='100'>
+<img src="Images/test.bmp" alt="BMP test" width='100',height='100'>

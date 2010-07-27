@@ -1,0 +1,6 @@
+Species:      1           data/species/human.txt
+Population:   3           data/populations/SNP3GEN.txt
+Markers:      20          data/humancomplexSNPdata/markers.txt
+Individuals:  15  10  5   data/humancomplexSNPdata/individuals.txt
+Traits:       2           data/humancomplexSNPdata/traits.txt
+Cofactors:    2           data/humancomplexSNPdata/cofactors.txt

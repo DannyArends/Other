@@ -1,0 +1,160 @@
+--inputdata--
+organism
+name compartiments
+
+compartiment
+input output
+
+markers
+markername type chromosome location_physical location_genetic
+
+epigenetic
+regionname chromosome location_physical
+
+expressions
+genename chromosome location_physical
+
+proteins
+proteinname genenames
+
+metabolites
+metabolitename proteinnames
+
+environments
+name 
+
+
+
+
+bacteria
+compartiment 1
+  0 wholecell 1 
+    0 cell 0
+      1 chromosome
+
+yeast
+compartiment 1
+  0 wholecell 1
+    0 cell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+
+arabidopsis
+compariments 4
+  0 root 1
+    0 rootcell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+  1 stem 1
+    0 stemcell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression  
+  2 leaves 1
+    0 leavecell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression        
+  3 flower
+     0 flowerleavecell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+    0 reproductioncell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+
+nematode
+compariments 4
+  0 exterior 2
+    0 skincell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+    0 haircell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+  0 gut 1
+    0 intestinalcell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+  0 brain 2
+    0 neuron 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+    0 gliacell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression
+  0 reproduction 1
+    0 gonadcell 3
+      0 nucleous 2
+        0 epigenetic
+        1 geneexpression
+      1 cytosol 2
+        0 proteinexpression
+        1 metabolites
+      2 mitochondria 1
+        0 mitochondriaexpression        
+        

@@ -1,0 +1,5 @@
+name:     ArabidopsisThalia
+nchr:     5
+ploid:    2
+sex:      N
+sextype:  0

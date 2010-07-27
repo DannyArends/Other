@@ -1,0 +1,134 @@
+RGG v0.0
+Stage 0) Parameters
+  Filename: input/SNPhumancomplexIN.txt
+  Alpha: 0.15
+  Model: F
+  Scan: C
+Stage 1) Inputfile
+  Sub 1) Reading inputfile
+  Species file: data/species/human.txt
+   Species:HomoSapiens
+   Chromosomes:23 2
+   Sex:23 1
+  Population file: data/populations/SNP3GEN.txt with 3 populations
+   Generation 0: using snp markers with formula AA*CC*TT*GG
+   Generation 1: using snp markers with formula AA*CC*TT*GG
+   Generation 2: using snp markers with formula AA*CC*TT*GG
+  Marker file: data/humancomplexSNPdata/markers.txt with 20 markers
+		0 Marker01 1 0.00
+		1 Marker02 1 20.00
+		2 Marker03 1 80.00
+		3 Marker04 2 0.00
+		4 Marker05 2 10.00
+		5 Marker06 2 60.00
+		6 Marker07 3 0.00
+		7 Marker08 3 35.00
+		8 Marker09 3 70.00
+		9 Marker10 4 0.00
+		10 Marker11 4 15.00
+		11 Marker12 4 40.00
+		12 Marker13 4 60.00
+		13 Marker14 4 80.00
+		14 Marker15 4 100.00
+		15 Marker16 5 0.00
+		16 Marker17 5 10.00
+		17 Marker18 5 20.00
+		18 Marker19 5 30.00
+		19 Marker20 5 80.00
+  Individual file: data/humancomplexSNPdata/individuals.txt with 30 individuals
+		0 Ind01: AA CG CC AG AA AC CC AA AA CC AA CT AA CC AC AC AA CC CC CC
+		1 Ind02: AA CG AA AG AT AA CG AA AC CC AA TT AA GG AC AC AA CC CC CC
+		2 Ind03: AT CC CC GG AT AA CG AA AC CC AA CT AA GG AA AC AA CG AC CT
+		3 Ind04: AA CG CC GG AT AA CG AA AC CC AA CT AA GG CC CC AC GG AC TT
+		4 Ind05: AA GG AA GG AA AC CC AG AA CC AA CT AA GG AA AA AA GG CC TT
+		5 Ind06: TT GG AA AG AT AA CC AG AC CC AC TT AA GG AA AA AA GG CC TT
+		6 Ind07: TT GG AA GG AA AC CC AG AA CC AC TT AA CC AC CC AC CG AA TT
+		7 Ind08: AA CG CC AG AA CC CC AG AA CC AC TT AA CG AC CC AC CG AA CT
+		8 Ind09: AA CC AC AA AA CC CC AA AA CC AA TT AA CG AA CC AA CG AA CT
+		9 Ind10: AT CC AC AA AA AC CC AA AA CC AA CT AA CG AA AA AA CC AC CT
+		10 Ind11: AA CG CC AG AA AC CC AA AA CC AA CT AA CC AC AC AA CC CC CC
+		11 Ind12: AA CG AA AG AT AA CG AA AC CC AA TT AA GG AC AC AA CC CC CC
+		12 Ind13: AT CC CC GG AT AA CG AA AC CC AA CT AA GG AA AC AA CG AC CT
+		13 Ind14: AA CG AC GG AT AA CG AA AC CC AA CT AA GG CC CC AC GG AC TT
+		14 Ind15: AA GG AA GG AA AC CC AG AA CC AA CT AA GG AA AA AA GG CC TT
+		15 Ind16: TT GG AA AG AT AA CC AG AC CC AC CT AA GG AA AA AA GG CC TT
+		16 Ind17: TT GG AA GG AA AC CC AG AA CC AC TT AA CC AC CC AC CG AA TT
+		17 Ind18: AA CG CC AG AA CC CC AG AA CC AC CT AA CG AC CC AC CG AA CT
+		18 Ind19: AA CC CC AG AA CC CC AA AA CC AA TT AA CG AA CC AA CG AA CT
+		19 Ind20: AT CC CC AG AA AC CC GG AA CC AA CT AA CG AA AA AA CC AC CT
+		20 Ind21: AT CG CC AG AA AC CC AA AA CC AA CC AA CC AC AC AA CC CC CC
+		21 Ind22: AA CG AA AG AT AA CG AA AC CC AA TT AA GG AC AC AA CC CC CC
+		22 Ind23: AT CC CC GG AT AA CG AA AC CC AA CC AA GG AA AC AA CG AC CT
+		23 Ind24: AA CG CC GG AT AA CG AA AC CC AC CC AA GG CC CC AC GG AC TT
+		24 Ind25: AA GG AA GG AA AC CC AG AA CC CC CT AA GG AA AA AA GG CC TT
+		25 Ind26: TT GG AA AG AT AA CC AG AC CC AC TT AA GG AA AA AA GG CC TT
+		26 Ind27: TT GG AA GG AA AC CC AG AA CC AC TT AA CC AC CC AC CG AA TT
+		27 Ind28: AA CG CC AG AA CC CC AG AA CC AC TT AA CG AC CC AC CG AA CT
+		28 Ind29: AA CC CC AA AA CC CC GG AA CC CC TT AA CG AA CC AA CG AA CT
+		29 Ind30: AT CC CC AA AA AC CC AA AA CC AA CT AA CG AA AA AA CC AC CT
+  Trait file: data/humancomplexSNPdata/traits.txt with 2 traits
+		Trait01	Trait02
+		10.80	12.00
+		11.20	10.00
+		12.30	8.10
+		15.10	9.10
+		7.75	9.60
+		8.93	9.80
+		7.90	10.50
+		10.50	11.90
+		14.00	12.00
+		11.30	9.20
+		4.80	12.00
+		11.20	10.00
+		12.30	8.10
+		15.10	9.10
+		7.75	9.60
+		8.93	9.80
+		7.90	9.50
+		10.50	11.90
+		14.00	12.00
+		11.30	9.20
+		9.80	12.00
+		11.20	10.00
+		12.30	8.10
+		15.10	9.10
+		7.75	9.60
+		8.93	9.80
+		7.90	10.50
+		10.50	11.90
+		14.00	12.00
+  Cofactor file: data/humancomplexSNPdata/cofactors.txt with 2 cofactors
+		Plot	Array
+		1	1
+		1	2
+		1	1
+		1	2
+		2	2
+		2	2
+		2	1
+		2	2
+		1	2
+		2	1
+		1	2
+		1	2
+		1	1
+		1	2
+		2	2
+		2	2
+		2	1
+		2	2
+		1	2
+		1	1
+		1	1
+		1	2
+		1	1
+		1	2
+		2	1
+		2	1
+		2	1
+		2	2
+		1	2
+  Sub 2) Checking inputfile
+Stage 2) Modeling
+Stage 3) Scanning
+Stage 3) Creating report

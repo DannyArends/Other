@@ -1,0 +1,148 @@
+﻿body{
+    margin:0px 0px;
+    background-color: White;
+}
+h1{
+    font-size:22px;
+    color: black;
+    font-family:"lucinda";
+    margin:10px 10px;
+}
+h2{
+    font-family:"lucinda";
+    font-size:19px;
+    color: black;
+    margin:10px 10px;
+}
+h3{
+    font-family:"courier new";
+    font-size:15px;
+    color: black;
+    margin:10px 10px;
+}
+table {
+    color: black;
+	border:0px;
+    margin:0px 0px 0px 0px;		
+	text-align:left;
+}
+th{
+    font-size:14px;
+    color: Black;
+}
+td {
+    font-family:"lucinda";
+    font-size:13px;
+	text-align:left;
+	width:100%;
+}
+
+.top{
+	height:10%;
+    background:white;
+    margin:0px 0px 0px 0px;
+    padding:0px 0px 0px 0px;	
+	vertical-align:top;
+}
+
+.navi{
+	width:10%;
+	color: Black;
+	text-align:center;
+    margin:0px 0px 0px 0px;	
+    padding:20px 0px 0px 0px;	
+	vertical-align:top;
+}
+
+.Rnavi{
+	width:15%;
+	color: Black;	
+    background: White;	
+	text-align:center;
+	vertical-align:bottom;
+    margin:0px 0px 0px 0px;		
+    padding:0px 0px 0px 0px;	
+}
+
+.foot{
+	height:2%;
+	width:20%;	
+	vertical-align: bottom;
+	text-align:right;
+	color: Black;
+    background: #f0f0f0;	
+}
+.main{
+	width:60%;
+    color: Black;	
+    background:White;	
+	height:400px;
+	vertical-align:top;
+	text-align:justify;
+    margin:0px 0px 0px 0px;		
+    padding:5px 0px 0px 50px;	
+}
+
+.SButton{
+        color:black;
+		width:120px;		
+        background:#f0f0f0;
+        margin:1px 1px 1px 1px;		
+        padding:1px 1px 1px 1px;		
+		TEXT-DECORATION:none;		
+		text-align:left;
+		font-family:"lucinda";
+		font-size:13px;		
+}
+.SButton:hover{
+        color:black;
+		width:105px;
+		background:white;
+        margin:1px 1px 1px 1px;		
+        padding:1px 1px 1px 1px;
+		TEXT-DECORATION:none;
+		text-align:center;	
+		font-family:"lucinda";
+		font-size:13px;
+}
+.SButton:active{
+        color:Black;
+		width:105px;
+		background:white;
+        margin:1px 1px 1px 1px;		
+        padding:1px 1px 1px 1px;
+		TEXT-DECORATION:none;
+		text-align:center;
+		font-family:"lucinda";
+		font-size:13px;		
+}
+.SButton :visited {
+        color:white;
+		width:105px;		
+        background:gray;
+        margin:1px 1px 1px 1px;		
+        padding:1px 1px 1px 1px;		
+		TEXT-DECORATION:none;
+		text-align:left;
+		font-family:"lucinda";
+		font-size:13px;		
+}
+
+a:link{
+	TEXT-DECORATION:none;	
+}
+a:hover{
+	TEXT-DECORATION:none;	
+}
+a:active{
+	TEXT-DECORATION:none;
+}
+a:visited{
+	TEXT-DECORATION:none;
+}
+
+
+
+
+
+

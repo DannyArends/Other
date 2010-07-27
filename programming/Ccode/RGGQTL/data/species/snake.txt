@@ -1,0 +1,5 @@
+name:     SerpentesColubridae
+nchr:     36
+ploid:    2
+sex:      1
+sextype:  2

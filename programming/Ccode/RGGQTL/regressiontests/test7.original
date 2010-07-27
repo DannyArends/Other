@@ -1,0 +1,8 @@
+RGG v0.0
+Stage 0) Parameters
+  Filename: input/RILarabidopsisIN.txt
+  Alpha: 0.15
+  Please set a valid modeling method (F or B).
+Commandline switches:
+-h          This help.
+-v          Verbose (produce a lot of textoutput).

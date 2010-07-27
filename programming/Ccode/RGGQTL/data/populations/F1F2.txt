@@ -1,0 +1,3 @@
+generation:               2
+data/markers/classic.txt  (A*B) 
+data/markers/classic.txt  (A*B)*(A*B)

@@ -1,0 +1,42 @@
+AddinC                  AddinC - Basic example of adding up two
+                        integers in C
+analyseQTL              analyseQTL - simulation / modeling / mapping /
+                        permutation of QTL in a population with SNP
+                        markers
+assortedmating          assortedmating - Calculates from SNP genotyped
+                        parents and children mendelian seggregation
+                        parameters and Outbreading coefficients
+BreedAssorted           BreedAssorted - Simulation of assorted breeding
+                        in a population
+BreedRandom             BreedRandom - Simulation of random breeding in
+                        a population
+CreatePopulation        CreatePopulation - Simulation of a population
+                        with SNP markers not at H/W equilibrium
+CreatePopulationHW      CreatePopulationHW - Simulation of a population
+                        with SNP markers at H/W equilibrium
+find.parent             find.parent - Finds parents for a single
+                        individual using genetic distance measurements
+kinshipNetwork          kinshipNetwork - Created a .SIF network with
+                        kinship relations between individuals
+mapRF                   mapRF - QTL mapping for QTLframework using a
+                        randomforest approach
+mapSM                   mapSM - QTL mapping for QTLframework using a
+                        single marker anova model
+parents                 parents - Finds tripplets of individuals with
+                        parents from genetic distance measurements
+plot.genotypes          plot.genotypes - Graphical representation
+                        highlighting deviations from expected
+                        genotypefreq after randommating
+plot.parentimage        plot.parentimage - Graphical representation
+                        highlighting possible parents of individuals
+plot.parentplot         plot.parentplot - Graphical representation
+                        highlighting possible parents of individuals
+plot.popstats           plot.popstats - Graphical representation of
+                        basic population statistics
+Rexamples               Rexamples - Some examples of R functions
+scanRF                  scanRF - QTL scanning using randomForest
+                        algorithm
+scanSM                  scanSM - QTL scanning using a single marker
+                        anova model
+scoreKinship            scoreKinship - Calculates kinshipscores based
+                        on SNPmarker data

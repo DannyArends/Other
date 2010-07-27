@@ -1,0 +1,6 @@
+Species:      1   data/species/arabidopsis.txt
+Population:   1   data/populations/RIL.txt
+Markers:      20  data/arabidopsisRILdata/markers.txt
+Individuals:  10  data/arabidopsisRILdata/individuals.txt  
+Traits:       2   data/arabidopsisRILdata/traits.txt
+Cofactors:    2   data/arabidopsisRILdata/cofactors.txt

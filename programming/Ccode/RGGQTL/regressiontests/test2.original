@@ -1,0 +1,72 @@
+RGG v0.0
+Stage 0) Parameters
+  Filename: input/F2mouseIN.txt
+  Alpha: 0.10
+  Model: B
+  Scan: C
+Stage 1) Inputfile
+  Sub 1) Reading inputfile
+  Species file: data/species/mouse.txt
+   Species:MusMusculus
+   Chromosomes:20 2
+   Sex:20 1
+  Population file: data/populations/F2.txt with 1 populations
+   Generation 0: using classic markers with formula (AA*BB)*(AA*BB)
+  Marker file: data/mouseF2data/markers.txt with 20 markers
+		0 Marker01 1 0.00
+		1 Marker02 1 20.00
+		2 Marker03 1 80.00
+		3 Marker04 2 0.00
+		4 Marker05 2 10.00
+		5 Marker06 2 60.00
+		6 Marker07 3 0.00
+		7 Marker08 3 35.00
+		8 Marker09 3 70.00
+		9 Marker10 4 0.00
+		10 Marker11 4 15.00
+		11 Marker12 4 40.00
+		12 Marker13 4 60.00
+		13 Marker14 4 80.00
+		14 Marker15 4 100.00
+		15 Marker16 5 0.00
+		16 Marker17 5 10.00
+		17 Marker18 5 20.00
+		18 Marker19 5 30.00
+		19 Marker20 5 80.00
+  Individual file: data/mouseF2data/individuals.txt with 10 individuals
+		0 Ind01: AA AA AB AA AB AB AB AA AA AB AA AB AA AB AA BB AA BB BB AB
+		1 Ind02: AA AA AA AA AA AA AB AA AB AA AA AB AA AB AA AB AA AB BB AB
+		2 Ind03: AB BB AB AA BB AA AA AA AB AA AB AB AA AA AA BB AA AA AA AB
+		3 Ind04: AB BB AB AB BB AA AA AB AB AB AB AB AA AA AB BB BB AA AA AA
+		4 Ind05: AA BB AA AA AA BB AB BB AA AB AB AB AA AA AA AA AA AA BB AB
+		5 Ind06: AB BB BB AA AB BB BB AB AB BB AB AB AA AB AA AA AA BB BB BB
+		6 Ind07: AB AB BB AB AA AB AB AB AA BB BB AB BB AB AB AB AB BB BB AB
+		7 Ind08: AA AB AB AA AA AB AB BB AA BB BB AB BB AB AB AB BB BB BB AB
+		8 Ind09: AA AB BB BB AA BB BB AB AA BB BB AB AB AB AA AB AA BB BB AB
+		9 Ind10: AB AB BB BB AA AB BB BB AA BB AB AB AB AB AA AA AA BB BB AB
+  Trait file: data/mouseF2data/traits.txt with 2 traits
+		Trait01	Trait02
+		10.80	12.00
+		11.20	10.00
+		12.30	8.10
+		15.10	9.10
+		7.75	9.60
+		8.93	9.80
+		7.90	10.50
+		10.50	11.90
+		14.00	12.00
+  Cofactor file: data/mouseF2data/cofactors.txt with 2 cofactors
+		Plot	Array
+		1	1
+		1	2
+		1	1
+		1	2
+		2	1
+		2	1
+		2	1
+		2	2
+		1	2
+  Sub 2) Checking inputfile
+Stage 2) Modeling
+Stage 3) Scanning
+Stage 3) Creating report

@@ -1,0 +1,5 @@
+name:     MusMusculus
+nchr:     20
+ploid:    2
+sex:      20
+sextype:  1

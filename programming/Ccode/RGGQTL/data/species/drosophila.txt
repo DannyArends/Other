@@ -1,0 +1,5 @@
+name:     DrosophilaMelanogaster
+nchr:     4
+ploid:    2
+sex:      1
+sextype:  1

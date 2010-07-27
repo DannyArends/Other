@@ -1,0 +1,13 @@
+== RubyWebserver
+
+Basic webserver handling .html requests (info retrieved from .txt files in the Pages directory)
+Basic webserver handling .css requests (from .css files in the Style directory)
+
+using: 
+	webserver.rb 	- Main program start with ruby webserver.rb
+	common.rb	- some common functions
+	image.rb	- Serving out images in binairy format (png,jpg,gif,tiff)
+	layout.rb	- Layout a single HTML page
+	styles.rb	- Serving out a .css
+	menu.rb	- return a directory listing in html
+	main.rb	- reads in a .txt

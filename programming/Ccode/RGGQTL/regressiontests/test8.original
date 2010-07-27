@@ -1,0 +1,7 @@
+RGG v0.0
+Stage 0) Parameters
+  Filename: input/RILarabidopsisIN.txt
+  Please set alpha between 0 and 1.
+Commandline switches:
+-h          This help.
+-v          Verbose (produce a lot of textoutput).

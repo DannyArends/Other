@@ -1,0 +1,4 @@
+generation:           3
+data/markers/snp.txt  A*C*T*G
+data/markers/snp.txt  A*C*T*G
+data/markers/snp.txt  A*C*T*G

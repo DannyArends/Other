@@ -1,0 +1,2 @@
+generation:               1
+data/markers/classic.txt  A+B

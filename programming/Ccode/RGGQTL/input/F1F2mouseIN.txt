@@ -1,0 +1,6 @@
+Species:      1       data/species/mouse.txt
+Population:   2       data/populations/F1F2.txt
+Markers:      20      data/mouseF2data/markers.txt
+Individuals:  10  10  data/mouseF2data/individuals.txt  
+Traits:       2       data/mouseF2data/traits.txt
+Cofactors:    2       data/mouseF2data/cofactors.txt
