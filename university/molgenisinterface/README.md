@@ -1,0 +1,4 @@
+MolgenisInterface
+=============
+
+To read binairy.

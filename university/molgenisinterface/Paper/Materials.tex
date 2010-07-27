@@ -1,0 +1,12 @@
+\section{Materials and Infrastructure}
+\subsection{Cluster infrastructure}
+To analyse QTL's directly from a molgenis webenviroment, additional calculation power is needed to perform these intensive calculations. 
+Because QTL calculation can take upto (or more) than 24 hours these calculations should be performed by a seperate machine 
+or even a parallel processing cluster. The plugin created uses and SHH tunnel to a machine running a PBS job sceduler, any machine using PBS to scedule jobs  
+can in theory be used when the following prerequisites are met:
+\begin{itemize}
+	\item Connection via SHH using login and password
+	\item installed PBS job sceduling system (qsub, qstat, qselect, qdel) \cite{qstat06}
+	\item R 2.8.0+
+	\item R Packages: RCurl, molgenis, R/qtl (optional: SNOW)
+\end{itemize}

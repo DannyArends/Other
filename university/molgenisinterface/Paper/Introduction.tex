@@ -1,0 +1,23 @@
+\section{Introduction}
+\subsection{r/qtl}
+R/qtl is an open source package for mapping QTL in experimental crosses for the R programming language\cite{broman09}\cite{broman03}.
+It can be used to analyse several types of experimental crosses (Backcross (BC), F2, Recombinant inbred lines (RIL), Intercrosses (IC)) 
+. Furthermore it offers many methods for QTL mapping (Composite interval mapping (CIM), expectation maximization (EM), marker regression (MR) and 
+Extended Haley-Knot (eHK)). Because R/qtl supports different experimental crosses and contains many extra functions (plotting, genotype checking, etc).
+Because it is opensource software no cost are associated with usage of the R-package (or the R-software infrastructure). Also its opensource nature
+ makes it easy for others to contribute to the package. 
+Our goal is to make complex QTL mapping methods widely accessible and allow users to focus on modeling rather than computing. R/qtl 
+is becoming an increasingly popular environment for QTL analysis and has its own stabile userbase\cite{broman03}.
+\subsection{Molgenis \& XGAP}
+Storing information is very important, it becomes even more crucial when large -omics datasets are involved. These -omics sets are ussually generated 
+in plain text format and read into a database system (mySQL/Oracle/msSQL). However these systems are not tailored to the needs of this biological data.
+Providing ussually only storage for the most basic of datatypes (integers,strings,etc), they ussually lack biological dataformats, but are very good 
+at storing data within a strict format. The molgenis database system using the extensible genotype \& phenotype (XGAP) datamodel aims to solve both these problem.
+It does so by providing an easy to change datamodel (XGAP), with a generator to change the currentdatabase layout with a push of the button. The adaptability
+of the system allows for easy managment of constantly changing biological data. This is furthermore enhanched by allowing for 3th party plugin to be 
+connected to the database system. Molgenis was used in our project as out dataproviding software and a plugin was designed and implemented to enable 
+molgenis users to perform R/QTL analysis from a webenviroment.
+\subsection{High Performance Computing (HPC)}
+The university of Groningen has an institute dedicated to high performance computing. The cluster is comprised of 168 machines running on a dualcore CPU. To 
+facilitate high performance computations a PBS\cite{PBS2000} jobsceduler is present on the cluster, together with an installation of R-2.9.0. When computational job become too big for a desktop computer, these HPC facilities can be used. 
+Another part of the project was focused on using the high speed computing facilities available in combination with the molgenis database system. 

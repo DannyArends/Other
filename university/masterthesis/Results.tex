@@ -1,0 +1,81 @@
+\newpage
+\section{Results}
+Several results were obtained that will not be discussed here in great detail. These include:\\
+Help pages for the functions created.\\
+A manual for the R/qtl+MQM package\\
+A draft paper about R/qtl + MQM\\
+These additional results can be found in the additional material section of this thesis. We will discuss in more detail some interesting parts of the MQM algorithm, or were design choices were made that limit/benifit the end user.
+\subsection{Speeding up QTL \& Permutation analysis}
+Basic single trait permutation was increased by using the SNOW package to distribute QTLscanning across multiple cores of a multicore desktop machine (See figure 1 in the figures section). 
+Theorectically this can reduce computation time by the number of cores used, however this theoretical gain is never reached because overhead is associated with distribution of QTLscans. In the benchmarking section simulations are used to show improvement of the singletrait analysis versus a parallel single trait analysis. For multiple traits a more complex permutation strategy is needed to obtain genomewide thresholds. This is because correlations between traits can give rise to false hotspots. Imagine that a single traits maps at random to a location, all traits correlated with this trait will map to the same location also, creating a false QTL hotspot. To correct for this, permutation is performed on multiple traits leaving trait correlation structure intact. Parallel permutation is possible, although during each permutation correlation between traits is maintained however across multiple permutation runs random redistribution of the traits takes place. This allows us to employ a multicore calculation scheme when running permutation analysis. Each permutation can be performed in parallel.  (See figure 2)
+\subsubsection{Scalability of MQM: Big Oh}
+To see how MQM performs on larger datasets with more markers and more individuals some benchmark
+tests were performed. These tests consist of timing the algorithm while we pertubate parameters
+to determine the scalability of MQM on this parameter. The raw results for the current implementation
+of MQM can be found in table\ref{tbl:tabel4} in the "additional files" section. MQM consist of two major parts,
+model selection and QTLmapping which have their own scalability:\\
+\begin{equation}
+O(model selection) = O(n*m_{c}!)
+\end{equation}
+\begin{equation}
+O(QTLmapping) = O(i*n^2*m_{s})
+\end{equation}
+This adds up to a scalability of the entire MQM algorithm
+\begin{equation}
+O(model selection + QTLmapping) = O(n*m_{c}!+i*n^2*m_{s})
+\end{equation}
+Where $n$ is the number of individuals in the experiment, $m_{c}$ the number of markers selected for consideration during backward elimination.
+$m_{s}$ is the number of selected cofactors (used in the mapping step) and $i$ the number of intervals used in the mapping step. These estimates 
+are made based on the code underlying the implementations and runtime estimates from table\ref{tbl:tabel4}.
+\subsection{Multiple QTL mapping}
+An interface was created to expose an opensource version of the MQM algorithm to R/qtl. This interface for the R programming language provides users with a more precise mapping of QTLs. The version of MQM provided also contained a backward model selection procedure (using cofactor elimination) and a missing data augmentation procedure. These functions were also retained and can be used by setting the right parameters to the the interface function mqm - model selection and mapping or mqmaugment - missing data augmentation routine.
+\subsubsection*{Data augmentation}
+Dataaugmentation was exposed to the R-interface, the aim of the dataaugmentation is to estimate missing genotype information.
+When using the MQMaugmentdata routine the crossobject is changed and can't be used anymore with the regular scanning function of R/qtl. 
+Compared to the R/qtl dataaugmentation routine (\textit{fill.geno}) of the R/qtl package it is relatively slow. Especially when dealing with a lot of missing genotypes the MQM dataaugmentation is considerably slower than the \textit{fill.geno} function. 
+However with not too much missing values augmentation using the MQMdataaugmentation routine improves 
+QTLmapping because all 'possible' genotypes are considered in the QTL analysis.
+\subsubsection*{Model selection}
+Backward modelselection was not ported to the R interface, this because of its interconnectivity with the mapping of QTLs. 
+Model selection is performed when cofactors are supplied to the main MQM scanning routine. After model selection the prefered model
+is used to map QTLs across the genome.
+\subsubsection*{Helper functions}
+Several helper functions were create to make optimal use with the MQM algorithm which will be discussed in short below.
+\begin{itemize}
+\item MQMCofactors() - Returns a cofactors list listing which markers should be considered when doing backward selection. When trying to set too many cofactors (which would leave too little degrees of freedom) the functions informs the user. 
+\item MQMCofactorsEach() - Returns a cofactors list listing which markers should be considered when doing backward selection. This function uses the each parameter to distribute markers across the genome.
+\item MQMloadAnalysis() - Loads the last analysis from file (if any) and return the results.
+\end{itemize}
+\subsection{Datastructuring and storage}
+Methods to connect R/qtl to XGAP/MolgenisDB were writen in the R programming language using the Molgenis R-API. 
+To use the Molgenis API for R an R-package named Rcurl \cite{Rcurl08} is used to make HTTP connections to the 
+Molgenis server. This creates a dependencie on the RCurl package when using the following functions to connect 
+QTL analysis and the XGAP/Molgenis database:
+\begin{itemize}
+\item CrossFromMolgenis() - Retrieving a dataset in the R/qtl cross format from a Molgenis database system with the XGAP dataformat
+\item ResultsToMolgenis() - Storing results to a Molgenis database system with the XGAP dataformat
+\item ResultsFromMolgenis() - Retrieving previously stored QTL analysis results from a Molgenis database system with the XGAP dataformat
+\end{itemize}
+With these three functions it is possible to build an environment in which automated QTL analysis is coupled with a database for storage.
+The cross object created from the CrossFromMolgenis() function can be used by all QTL analysis methodes present in  R/qtl.
+Using these functions data retrieval and storage can be automated and will aid researchers to build a pipeline integrating QTL analysis.
+\subsection{HPC of QTLs using Molgenisplugin}
+Because there is a high threshold for biological users to use R for QTL analysis a webplugin into the Molgenis system was created to enable users to 
+use the Molgenis webinterface to do high performance parallelized QTL analysis. The plugin stores QTL profiles back into the database and also information about each run.
+A webinterface provides users with a one click sollution, while the more complicated tasks are hidden from the user. 
+An overview of what happens out of sight can be seen in figure 8.
+The plugin itself can be found at:
+\\
+http:$\backslash$$\backslash$gbic.target.rug.nl:8080$\backslash$xgap4clusterdemo$\backslash$
+\\
+The following functions were created and are used during cluster analysis:
+\begin{itemize}
+\item CrossFromMolgenis() - Retrieving a dataset in the R/qtl cross format from a Molgenis database system with the XGAP dataformat
+\item ResultsToMolgenis() - Storing results to a Molgenis database system with the XGAP dataformat
+\item ResultsFromMolgenis() - Retrieving previously stored QTL analysis results from a Molgenis database system with the XGAP dataformat
+\end{itemize}
+\subsection{Visualisations}
+Additional visualizations were also added to R/qtl to enable users to play around more with their data using a graphical representations.
+Examples of all plotting routines can be found in the supplementary materials. The created plotting routines focus on: 
+multiple QTL analysis and multiple trait analysis. But also we created an 2D QTLplotting routine, showing QTL locations (X) versus Trait locations (Y).
+In these plots genes regulated in Cis show up on the diagonal ($y=x$) while significant QTLs outside this region are called TransQTLs. These plots are used in Genetical Genomics to find QTL hotspots (a region on the genome which has a lot of transQTLs).

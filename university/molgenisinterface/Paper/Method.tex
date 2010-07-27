@@ -1,0 +1,15 @@
+\section{Method}
+\subsection{Datastructuring and storage}
+In R we adopted the R/qtl cross object format, however when sharing results with others 
+(publication, etc) this binary format is not usefull. Here databases can help, storing huge amounts of data like publicly available 
+and / or private datasets. Adding data to a database in a transaction based way ensures data consistency. 
+Also database systems allow for third party software to store and retrieve data from the database directly or via
+a supplied application programming interface (API). The XGAP \cite{morris07} (Xtensible Genotype and Phenotype) datamodel is used 
+to format data in a homogenious matter when storing data into a molgenisDB. This XGAP format ensures data 
+is extensible and consistent. The molgenisDB system ensures dataconsistency and -coherency, plus allowing easy 
+access from R / JAVA / SOAP or by using HTML scripting.
+\subsection{HPC of QTLs using molgenis}
+A plugin was created to enable users to use the r/qtl package from the molgenis webenviroment. To use this plugin another machine is required 
+to distribute jobs and do qtl analysis. This was done to separate qtl calculation from normal server operations.
+On this website public datasets are available and the user can use the HPC cluster of the Rijks Universiteit of Groningen to do highperformance qtl analysis.
+Also we created an overview of the current infrastructure needed for a functional plugin.

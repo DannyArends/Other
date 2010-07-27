@@ -1,0 +1,11 @@
+Package: molgenis
+Version: 0.01
+Date: 25 May 2009
+Title: Interface between molgenis & r/qtl
+Author: Danny Arends <Danny.Arends@gmail.com>
+Maintainer: Danny Arends <Danny.Arends@gmail.com>
+Depends: R (>= 1.8.0), qtl, tools, RCurl
+Description: Interface between molgenis & r/qtl
+License: GPL version 3 or later
+LazyLoad: yes
+LazyData: yes

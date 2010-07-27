@@ -1,0 +1,68 @@
+\section{Method}
+\subsection{Speeding up QTL analysis}
+Within the emerging field of -omics data analysis QTL analysis is becoming more and more computationaly intensive. To speed up multiple trait analysis a parallellization strategy 
+using MPI was implemented. The SNOW package \cite{tierney04}, provides an message passing interface (MPI) implementation for R. Using SNOW  
+we can distribute calculations in batches across available computing cores on a multicore machine. The only requirement is that calculations
+can be performed independent of eachother (see figure 1).
+\subsection{QTL permutation analysis}
+Using a permutation approach it is possible to estimate thresholds for QTL significance. Because shuffling data gives us an estimate on how significant our results are. Permutation is performed by calculating 
+new trait values for each individual based on the variation in the original trait (see figure 1,2,5). Permutation is performed by 
+randomly redistributing (the original) traitvalues across individuals (each endophenotype value is redistributed only once per permutation). 
+Both methods of obtaining thresholds for QTL significance are implemented into the new bootstrap function in R/qtl. 
+After adding two bootstrap methods (permutation, parametric bootstrap) a parallel permutation approach was developed and implemented using SNOW.
+\subsubsection*{Single trait permutation}
+Parallel permutation analysis takes the same approach as multiple trait calculations using SNOW. In the case 
+of single trait permutations at the beginning of each run the traitvalues are randomly redistributed 
+over the indiviuals and analysis continues like a multitrait analysis. Using permutation we calculate new traitvalues for each individual
+(based on a random number chosen for each individual, and the variance in the original endophenotype). This process is repeated a $> 10000$ times
+to get maximum LOD scores in random traits. The distribution of these maximum LOD scores enables us to estimate a threshold 
+above which we call QTL's significant. QTLs above this threshold are identified as significant. Also here analysis time increases linearly with the number of bootstraps / permutations performed. A parallellization strategy was adopted to speed up calculations.
+\subsubsection*{Genome scan significance and FDR}
+When scanning multiple traits for QTLs, when doing an -omics experiment single trait thresholds are not sufficient. As a solution to this multiple testing problem we could set more 
+stringent thresholds using bonferroni correction or B/H correction to estimate real QTL effect and false QTL hotspots. However when doing this a lot of power is lost, 
+because of the stringent threshold. To estimate a genomewide threshold it is more rewarding to do a full genome permutation, 
+in which the correlation structures between traits are maintained.\cite{eQTL1} In each permutation genotypes are randomly distributed between indiviudals, 
+trait values remain unchanged, and a full parallel multitrait mapping of QTLs is performed (Figure 3). From these results we can calculate False Discovery Rates (FDR) for a given LOD score, this enables us to estimate how many of the QTLs above a certain threshold 
+are significant, and what cutoff gives the fewest number of false positives.
+\subsection{Multiple QTL mapping}
+An implementation of MQM was made by R.C. Jansen in the C-programming language. The original C-source code was adapted and implemented beind R to be used with more ease by biological users. This is facilitated because the R programming language is very intuitive for first time users and provides advanced toold for average and professional users.
+\subsubsection*{Model selection}
+Model selection is done by employing a backward elimination of possible co-factors. Model selection strategy (how many QTLs are underlying a trait) 
+is done by setting markers as cofactors for QTL analysis. Each cofactor is analyzed sequentially. If the model fit with cofactor is significantly better than without it, the cofactor is kept in the final model. This difference in fit between two models is determined by the AIC. So a model with a lower AIC is prefered above a model with a high AIC. The cofactor is dropped if the model gets a significantly worse fit with the data. The co-factors remaining after analysis 
+are used in the mapping phase of the MQM algorithm, where they will serve as covariates during mapping.
+\subsubsection*{QTL mapping}
+QTL mapping in MQM is almost similar to composite interval mapping (CIM). We start out explaining how CIM works and will then explain the difference between CIM and MQM.
+When using CIM we divide a chromosome in equally spaced regions (e.g. each region is 5 Cm long) by inserting pseudomarkers. For all these pseudomarkers the most likely genotype per individual is calculated using statistical genetics.
+ After calculation of the most likely genotypes CIM uses maximum likelihood or restricted maximum likelihood to calculate a LOD score at each of these pseudomarkers. This is done by using the most 
+likely genotype at those pseudomarkers. MQM does essentially the same thing dividing up the chromosomes in equally spaced regiosn, using pseudomarkers. MQM also maps LOD scores to these pseudomarkers. 
+However for each pseudomarker not the most likely genotype per individual is determined. But at each pseudomarker all possible genotype are calculated and their 
+probability of occuring (based on neighbouring markers). These genotypes are then used (weighted with the probability of occuring) to calculated LOD scores at each pseudomarker during the mapping of the QTLs.
+\subsection{Benchmarking}
+\subsubsection*{Multitrait and parallellization}
+Our approach to employ parallel permutations was benchmarked against a version running serial computations. This was done to obtain an estimate 
+on how much improvement can be gained when using multiple core analysis compared to a single core analysis. A summary of the benchmarking can be found in the results 
+section, and the raw data is supplied as a table in the "additional tables" section. (see Tables: \ref{tbl:tabel2} \& \ref{tbl:tabel3})
+\subsubsection*{MQM}
+Benchmarking of MQM was done to get an estimate of scalability of the algorithm. Benchmarking was performed using the R-programming language 
+and a dualcore desktop pc. To test the scalability of the MQM algorithm we pertubated several parameters that also vary during normal research, such as: Populations type (BC, F2, RIL), number of individuals, number of markers, number of co-factors under consideration during the model selection phase.
+
+\subsection{Datastructuring and storage}
+In R we adopted the R/qtl cross object format, however when sharing results with others 
+(publication, etc) this binary format is not useful. Here databases can help, storing huge amounts of data like publicly available 
+and / or private datasets. Adding data to a database in a transaction based way ensures data consistency. 
+Also database systems allow for third party software to store and retrieve data from the database directly or via
+a supplied application programming interface (API). The XGAP \cite{morris07} (Xtensible Genotype and Phenotype) datamodel is used 
+to format data in a homogenous matter when storing data into a molgenisDB. This XGAP format ensures data 
+is extensible and consistent. The molgenisDB system ensures dataconsistency and -coherency, plus allowing easy 
+access from R / JAVA / SOAP or by using HTML scripting.
+\subsection{HPC of QTLs using molgenisplugin}
+A plugin was created to enable users to use the R/qtl package from the molgenis webenvironment. To use this plugin another machine is required 
+to distribute jobs and do QTL analysis. This was done to separate QTL calculation from normal server operations.
+The clusterplugin was tested using public datasets that are available from previously performed QTL research. Users can use the HPC cluster 
+of the State University of Groningen to do high performance QTL analysis.
+Furthermore we created an overview of the current infrastructure needed for a functional plugin. This overview can be found in figure 8. 
+\subsection{Visualizations}
+We added some new visualizations to graphically explore the data. Visualization is important when doing complex analysis because 
+it gives graphical handles which one can work with. The new plotting methods were developed as an extention on the original plotting methods in R/qtl.
+We created new plotting methods for many endophenotypes analysis and bootstrap analysis, these plotting methods are based on a timeseries plotting 
+routine made by R. Brouwer\cite{brouwer09}.

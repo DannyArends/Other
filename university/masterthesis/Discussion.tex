@@ -1,0 +1,65 @@
+\newpage
+\section{Discussion}
+
+\subsection{Speeding up QTL \& Permutation analysis}
+To calculate even more QTL profiles or the same amount in less time several adaptations could be considered in the future:
+\\- Not mapping for QTLs when modelselection fails to fit a model for a single trait
+\\- Using the GPU (in addition to the CPU) which has multiple cores and faster memory
+\\- Gradual permutation strategy - when we find a peak significant after X iterations stop calculating.
+\subsection{Multiple QTL mapping}
+\subsubsection*{Why and When use the multiple QTL mapping (MQM) algorithm?}
+One of the main advantages of MQM over currently available methods is the higher precision when performing QTL analysis.
+Also using co-factors and doing backward model selection can help identify previously unknown locations underlying
+complex traits. To summarize the advantages of MQM:
+\begin{itemize}
+\item Better resolution than using other QTL mapping methods
+	\begin{itemize}
+	\item More available degrees of freedom, thus enabling users to create larger QTL models or 
+	consider more cofactors.
+	\item Interval mapping to get narrower confidence intervals, and thus reduce the number of genes 
+	(possible regulators of the trait) underlying the QTL 
+	\item Possibility to discover negatively linked QTLs on the same chromosome. By using cofactors 
+	different hypotheses are tested on different locations thus making it possible to unweave linkage between markers.
+	\end{itemize}
+\item Automatic backward model selection
+\end{itemize}
+However, there are also situations in which other QTL mapping methods present in  R/qtl are favoured:
+\begin{itemize}
+\item Ultra dense markermaps, here resolution is not limited by the markerset, but by the number of recombinations events between individuals. 
+This means that no extra resolution is obtained using MQM, so a markerbased approach would be computational less intensive. 
+\item This also holds when using a huge number of individuals for QTL analysis ($>3000$). Altough MQM scales 
+linearly based on the number of individuals when mapping QTLs, it is not possible to use a parallellization strategy because of 
+dependencies between individuals.
+\end{itemize}
+\subsubsection*{Model selection}
+Some limitations to modelselection exist in the current implementation of the MQM algorithm. We can't consider all markers as cofactors 
+when doing backward elimination because of limited power for statistical analysis. More power can be obtained by including more individuals, 
+in general we can set as many cofactors as we have individuals. If we want to test all markers as cofactors one should do multiple MQM runs with
+different markers selected as cofactor, to assess every markers importance. Furthermore, once a marker is dropped it is removed from the final model and not again looked at for inclusion in a following step. This could lead to erroneously dropping of cofactors when different cofactors explain the same part of the trait variance.
+
+\subsection{Benchmarking}
+Benchmarking shows an almost linear improvement in analysis time when using more computers in a cluster 
+(not counting data transfer times from and to the database). This linear scaling can also be obtained on a single desktop
+machine with multiple cores. The second strategy using SNOW in combination with clustermachines however has somewhat 
+more overhead because of starting more R instances. This methode will scale across a large number of cores. With an increasing number of cores result will be increasingly less than linear, but every machine will improve calculation time.
+However using both cores of the HPC machines doubles the effective number of machines in the cluster from 168 to 336 machines. Thus 
+overall we can calculate ~300 traits using the cluster in the time it takes a desktop pc to do a single profile.
+
+\subsection{HPC of QTLs using the molgenisplugin}
+Further extensions of the plugin could be made, a simple roadmap for the plugin:
+\\- A priori checking of tables selected.
+\\- Expose more scanning routines (CIM, MQM).
+\\- Expose all available parameters (scanone, CIM, MQM).
+\\- Better estimation of runtime on cluster.
+\\- Adding the option to do concurrent runs on the cluster
+\\- Better status overview using active polling of the calculationserver
+
+\subsection{Visualizations}
+Visualizations are used to tell a story. By adding more visualizations to  R/qtl we hope to expand the vocabulary of researchers.
+Some visualizations that were added:
+\begin{itemize}
+\item Singletrait permutation plot - Shows 5\% and 10\% FDR but also in blue the distribution of scores during permutation plotted per marker.
+\item Multitrait contour plot - Shows a contour plot where the outlines are different LOD levels for QTL.
+\item Multitrait heatmap - Showing QTL profiles for multiple traits at once.
+\item Cis/Trans plot - Showing QTL location versus trait location in 2D across the genome. This plot can be made when a user mapped a trait which also has a genetic location (gene expression, proteins)
+\end{itemize}

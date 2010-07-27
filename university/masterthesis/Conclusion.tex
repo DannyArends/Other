@@ -1,0 +1,19 @@
+\newpage
+\section{Conclusions}
+\subsection{Additions to R/qtl}
+MQM was succesfully integrated into the R/qtl package, also several extension to R/qtl
+were made which are summarized below. Also a manual to the R/qtl + mqm package was created together with Pjotr Prins, Richard Finkers, Ronnie Joosen and Karl Broman. The first drafts of a paper on the inclusion of MQM into R/qtl can be found in the additional materials section.
+\begin{itemize}
+\item Parallel multitrait analysis implemented into R/qtl using the SNOW library to utilize multi cpu desktop machines
+\item Parallel single trait permutation analysis implemented into R/qtl
+\item Parallel genomewide permutation and FDR implemented into R/qtl
+\item Plotting routines to visualize multitrait and bootstrap analysis to graphically investigate large amounts of QTL profiles
+\item Added the option to retrieve structured datasets from a XGAP/MolgenisDB
+\item Added the option to store and retrieve results from a XGAP/MolgenisDB
+\item Added a additional scanning function mqm implementing the multiple QTL mapping (MQM) algorithm
+\item For all functions added to the R/qtl package helpfiles were created with executable examples for each function.
+\end{itemize}
+\subsection{HPC QTL using the Molgenisplugin}
+A plugin for the Molgenis database system using XGAP was created, to enable Molgenis users to do R/qtl analysis using a HPC cluster.
+Also QTL analysis can be performed on the localserver of the Molgenis database. Thus removing the need for a HPC cluster, and adding more flexibility to the plugin system. Using localserver QTL analysis a user doesn't benefit from the decrease in calculation time, because jobs are calculated sequentially. An online example of parallel QTL mapping using the RUG HPC cluster can be found at:\\
+http:$\backslash$$\backslash$gbic.target.rug.nl:8080$\backslash$xgap4clusterdemo$\backslash$ \\

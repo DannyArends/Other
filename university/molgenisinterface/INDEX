@@ -1,0 +1,17 @@
+CrossFromMolgenis       CrossFromMolgenis - Create a cross-object from
+                        a molgenis database
+DownloadnSave           DownloadnSave - R/qtl analysis on a PBS cluster
+est_runtime             est_runtime - Estimates runtime by executing
+                        the file produced by generateESTfile
+generateESTfile         generateESTfile - Generates a QTL file to
+                        estimate runtime for each item
+generateQTLfile         generateQTLfile - Generates a QTL file
+generateRUNfile         generateRUNfile - Generates a .sh file with job
+                        description to be submitted to PBS
+molgenis                Interface between molgenis & r/qtl
+prepare_cluster         prepare_cluster - Setup of foldersystem
+ResultsFromMolgenis     ResultsFromMolgenis - Retrieve QTLresults from
+                        a molgenis database
+ResultsToMolgenis       ResultsToMolgenis - Store results from a
+                        MQM-qtl run into a molgenis database
+run_cluster             run_cluster - R/qtl analysis on a PBS cluster
