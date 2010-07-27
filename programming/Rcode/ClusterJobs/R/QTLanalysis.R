@@ -25,6 +25,7 @@ generateQTLfile <- function(DBpath = "", job, b_size,Ntraits,name,taskID,map,met
 	cat("library(qtl,lib.loc='~/libs')","\n",sep="",file=qtlfile)
 	cat("library(RCurl,lib.loc='~/libs')","\n",sep="",file=qtlfile,append=T)
 	cat("library(snow,lib.loc='~/libs')","\n",sep="",file=qtlfile,append=T)
+  cat("library(ClusterJobs,lib.loc='~/libs')","\n",sep="",file=qtlfile,append=T)
 cat("source(\"",paste(DBpath,"/api/R",sep=""),"\")\n",file=qtlfile,append=T)
 	#Print our report function
 	cat("\nreport <- function(status,text){\n",file=qtlfile,append=T)

@@ -354,7 +354,7 @@ init.QQplot <- function(){
 }
 
 init.length <- function(){
-	setwd("D:\\GBIC\\Lude\\DannyData")
+	setwd("D:\\GBIC\\Lude\\DataDanny")
 	order <- as.vector(read.csv("ChipIDOrderInGenotypeFiles.txt",header=FALSE,sep="\n"))
 	info <- read.csv("ChipIDToSampleInformation.txt",row.names=1,header=TRUE,sep="\t")
 	coln <- c("Chr","Pos",as.vector(order[,1]))

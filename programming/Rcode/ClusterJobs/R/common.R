@@ -20,8 +20,21 @@
 # generateRunfile: Generates a .sh file with job description to be submitted to pbs
 # generateQTLfile: Generates a QTL file which is executed (R CMD BATCH <qtlfile>) by a cluster
 # generateESTfile: Generates a QTL file to estimate runtime for each item
+# mqmmultitomatrix: Generates a mnatrix, tht can be uploaded by using the add.datamatrix function
 #
 ######################################################################
+
+mqmmultitomatrix <- function(mqmmulti){
+  matr <- NULL
+  coln <- NULL
+  for(x in 1:length(mqmmulti)){
+    matr <- cbind(matr,mqmmulti[[x]][,3])
+    coln <- c(coln, substr(colnames(r[[x]])[3],5,nchar(colnames(r[[x]])[3])))
+  }
+  rownames(matr) <- rownames(mqmmulti[[1]])
+  colnames(matr) <- coln
+  matr
+}
 
 generateRunfile <- function(job, est,jobid){
 	#Generate a runfile to submit to the cluster
@@ -38,21 +51,21 @@ generateRunfile <- function(job, est,jobid){
 	runfile
 }
 
-DownloadnSave <- function(investigationname,DBmarkerID = "", DBtraitID = "", DBpath = "",jobid,njobs){
+DownloadnSave <- function(investigationname,DBmarkerID = "", DBtraitID = "", dbpath = "",jobid,njobs){
 	#Generates a R-script to download all the information and build a cross object
 	qtlfile <- paste("~/run",jobid,"/download.R",sep="")
 	#Print our report function
 	cat("\nreport <- function(status,text){\n",file=qtlfile)
 	cat("\ttask <- ",jobid,"\n",file=qtlfile,append=T)
 	cat("\ttext <- substr(URLencode(text),0,100)\n",file=qtlfile,append=T)
-	cat("\tlink <- paste(\"",DBpath,"/taskreporter?job=\",task,\"&subjob=0&statuscode=\",status,\"&statustext=\",text,sep=\"\")\n",sep="",file=qtlfile,append=T)
+	cat("\tlink <- paste(\"",dbpath,"/taskreporter?job=\",task,\"&subjob=0&statuscode=\",status,\"&statustext=\",text,sep=\"\")\n",sep="",file=qtlfile,append=T)
 	cat("\tgetURL(link)\n",file=qtlfile,append=T)
 	cat("\tif(status==-1){\n\t\tcat(\"!!!\",text,\"!!!\")\n\t\t\n\t\tq(\"no\")\n\t}\n",file=qtlfile,append=T)
 	cat("}\n\n",file=qtlfile,append=T)
 	#load needed libraries
 	cat("library(qtl,lib.loc='~/libs')","\n",sep="",file=qtlfile,append=T)
 	cat("library(RCurl,lib.loc='~/libs')","\n",sep="",file=qtlfile,append=T)
-    cat("source(\"",paste(DBpath,"/api/R",sep=""),"\")\n",sep="",file=qtlfile,append=T)
+    cat("source(\"",paste(dbpath,"/api/R",sep=""),"\")\n",sep="",file=qtlfile,append=T)
 	#Downloading of Cross object (secured)
 	cat(Generate_Statement(paste("cross <- CrossFromMolgenis(genotypematrixname='",DBmarkerID,"',phenotypematrixname='",DBtraitID,"',investigationname='",investigationname,"')","\n",sep="")),file=qtlfile,append=T)
 	cat(Generate_Statement(paste("save(cross,file=\"~/run",jobid,"/cross.RData\")","\n",sep="")),file=qtlfile,append=T)
@@ -81,7 +94,7 @@ run_cluster <- function(name = "qtlTEST",investigation="",genotypes = "", phenot
 	}
 	nprun <- ceiling(totalitems/njobs)
 	cat("# of Traits:",totalitems,"\n# of Jobs",njobs,"# per run",nprun,"\n")
-	tryCatch(DownloadnSave(investigationname=investigation, genotypes,phenotypes,DBpath=dbpath,jobid,njobs)
+	tryCatch(DownloadnSave(investigationname=investigation, genotypes,phenotypes,dbpath=dbpath,jobid,njobs)
 		,error =  function(e){report(dbpath,jobid,0,-1,"Downloadscript")}
 	)
 	report(dbpath,jobid,0,2,"GeneratedDownload")
@@ -89,7 +102,7 @@ run_cluster <- function(name = "qtlTEST",investigation="",genotypes = "", phenot
 		,error =  function(e){report(dbpath,jobid,0,-1,"DownloadingCrossobject")}
 	)
 	report(dbpath,jobid,0,2,"FinishedDownloadingDatasets")	
-	tryCatch(est <- est_runtime(njobs,totalitems,DBpath=dbpath,nprun,jobid,map,method,model,step)
+	tryCatch(est <- est_runtime(njobs,totalitems,dbpath=dbpath,nprun,jobid,map,method,model,step)
 		,error =  function(e){report(dbpath,jobid,0,-1,"EstimatingTime")}
 	)
 	if(is.null(name)) name="qtlTEST"
@@ -98,7 +111,7 @@ run_cluster <- function(name = "qtlTEST",investigation="",genotypes = "", phenot
 	#ALL DONE NOW WE CAN GO INTO/run directory and make some calculations
 	for(x in 1:njobs){
 		cat("Generating: ",x,".1/",njobs,"\n",sep="")
-		tryCatch(generateQTLfile(DBpath=dbpath, job=x, b_size=nprun,Ntraits=totalitems,name=name,jobid,map,method,model,step)
+		tryCatch(generateQTLfile(dbpath=dbpath, job=x, b_size=nprun,Ntraits=totalitems,name=name,jobid,map,method,model,step)
 			,error =  function(e){report(dbpath,jobid,x,-1,"GeneratingQTLrunfile")}
 		)
 		report(dbpath,jobid,0,2,paste("Generated_QTL",x,sep=""))	
@@ -125,9 +138,9 @@ Generate_Statement <- function(statement){
 	secured
 }
 
-est_runtime <- function(njobs,ntraits=1, DBpath = "",num_per_run=1,jobid,nperm,map,method,model){
+est_runtime <- function(njobs,ntraits=1, dbpath = "",num_per_run=1,jobid,nperm,map,method,model){
 	#Crude estimation of time that it would take a job of num_per_run qtls to finish, we get all the data from molgenis and run 2 qtls profiles
-	generateESTfile(DBpath,nperm,map,method,model,jobid)
+	generateESTfile(dbpath,nperm,map,method,model,jobid)
 	#time execution of executing 1 trait
 	s <- proc.time()
 	system("R CMD BATCH ESTtime.R")
@@ -159,10 +172,10 @@ prepare_cluster <- function(jobid){
 	setwd(paste("~/run",jobid,sep=""))
 }
 
-report <- function(DBpath,task,job,status,text){
+report <- function(dbpath,task,job,status,text){
 	progress <- 0
 	text <- substr(URLencode(text),0,100)
-	link <- paste(DBpath,"/taskreporter?job=",task,"&subjob=",job,"&statuscode=",status,"&statustext=",text,"&statusprogress=",progress,sep="")
+	link <- paste(dbpath,"/taskreporter?job=",task,"&subjob=",job,"&statuscode=",status,"&statustext=",text,"&statusprogress=",progress,sep="")
 	getURL(link)
 	if(status==-1){
 		q("no")
