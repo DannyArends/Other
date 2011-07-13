@@ -1,0 +1,20 @@
+# Black normal font color
+BLACK="\[\033[0;30m\]";
+
+# Use git branch to print out the branch name
+function parse_git_branch { 
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \(\1\)/'; 
+}
+
+# Use git status to discover if we're dirty (use for color)
+function parse_git_status { 
+  git status 2> /dev/null | sed -e '/(working directory clean)$/!d' | wc -l; 
+}
+
+# Color for the branch status (1=Red,2=Green)
+function check_git_changes { 
+  [ `parse_git_status` -ne 1 ] && tput setaf 1 || tput setaf 2
+}
+
+# Add to the prompt
+export PS1="$BLACK\w\[\$(check_git_changes)\]\$(parse_git_branch)$BLACK $ "
