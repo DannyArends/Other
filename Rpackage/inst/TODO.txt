@@ -1,0 +1,14 @@
+"To do" list for DCODE
+----------------------------------------------------------------------
+This file is intended to contain a list of many of the additions and
+revisions that are planned for the DCODE package.  
+
+If you any additions or revisions to suggest, please send an email to
+Danny Arends, <Danny.Arends@Gmail.com>.
+----------------------------------------------------------------------
+ 
+SHORT TERM:
+
+MEDIUM TERM:
+
+LONG TERM:

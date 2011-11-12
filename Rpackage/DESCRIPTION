@@ -1,0 +1,9 @@
+Package: Dcode
+Version: 0.0.0-1
+Date: 18 Oct 2011
+Title: Skeleton package to compile D 2.0 code inside the R 2.14.0 toolchain
+Author: Danny Arends <Danny.Arends@gmail.com>
+Maintainer: Danny Arends <Danny.Arends@gmail.com>
+Depends: R (>= 1.14.0), utils
+Description: Skeleton package to compile D 2.0 code inside the R 2.14.0 toolchain
+License: GPL 3

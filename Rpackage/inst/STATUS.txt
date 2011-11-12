@@ -1,0 +1,4 @@
+"STATUS" of DCODE
+-----------------
+
+R CMD check no warnings (except git and line endings)
