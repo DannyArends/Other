@@ -1,0 +1,48 @@
+/*!
+  * 
+  *	\mainpage The BUILDSYSTEM
+  * \section intro_sec Introduction
+  *  Welcome to the Buildsystem, this project is hard to describe in a single world, it is a collection of software i created during a lifetime of programming c/c++.<br>
+  *
+  * \section deps_sec Dependencies
+  *  C and C++ compiler,<br>
+  *  Win32, minGW, Eclipse CDT<br>
+  *  SDL, pthreads, SDL_net, sqlite3 (Bindings are already in the project)
+  *
+  * \section install_sec Installation
+  * \subsection step0 Step 0: Setup dependencies
+  *  Install Eclipse + CDT builder
+  *  Optional (but recommended):  Doxygen Plugin http://download.gna.org/eclox/update/ for eclipse
+  *  Optional (but recommended):  Git Plugin http://www.eclipse.org/egit/ for eclipse  
+  * \subsection step1 Step 1: Installing the project into with eclipse
+  *  Create a new workspace<br>
+  *	 Extract the contents from the zip-file or clone buildsystem.git<br>
+  *  Create a new empty c++ application (minGW toolchain)
+  *  Import the extracted files into the new c++ application
+  * \subsection step1a Step 1a: Setup dependencies yourself
+  *  Add to the C++ and C compiler include directory: %project%/external/src, %project%/src<br>
+  *  Add to the Linker libraries include directory: %project%/external/bin<br>
+  *  Add to the Linker libraries: pthreadGC2,SDL,SDL_Net,sqlite3,OpenGL32,Glu32
+  * \subsection step1b Step 1b: Use the dependencies file
+  *  Close Eclipse ;)<br>
+  *  Copy the .project and .cproject files in the zip in the project directory in the eclipse workspace directory<br>
+  *  Restart Eclipse ;)   
+  * \subsection step2 Step 2: Executing the application
+  *  Press the run button, if nothing happens (no text in console)<br>
+  *  Open the Run Configuration -> Environment of the project<br>
+  *  Add a new variable called 'Path' and add as value minGW/bin and project/external/bin 
+  *
+  * \section disc_sec Disclaimer
+  *   This program is free software; you can redistribute it and/or<br>
+  *   modify it under the terms of the GNU General Public License,<br>
+  *   version 3, as published by the Free Software Foundation.<br>
+  *   <br>
+  *   This program is distributed in the hope that it will be useful,<br>
+  *   but without any warranty; without even the implied warranty of<br>
+  *   merchantability or fitness for a particular purpose.  See the GNU<br>
+  *   General Public License, version 3, for more details.<br>
+  *   <br>
+  *   A copy of the GNU General Public License, version 3, is available<br>
+  *   at http://www.r-project.org/Licenses/GPL-3<br><br><br>
+  *   Copyright (c) 2010 Danny Arends
+ */

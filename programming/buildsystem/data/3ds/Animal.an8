@@ -1,0 +1,125 @@
+header {
+  version { "0.95" }
+  build { "2007.04.02" }
+}
+environment {
+  grid { 1 10 50 50 }
+  framerate { 24 }
+}
+object { "object01"
+  sphere {
+    name { "sphere01" }
+    base {
+      origin { (0.22472 24.045 0) }
+    }
+    material { " -- default --" }
+    diameter { 17.36 }
+    longlat { 12 8 }
+  }
+  cylinder {
+    name { "cylinder01" }
+    base {
+      origin { (-1.573 16.854 0) }
+      orientation { (0 0 0.98741 0.15815) }
+    }
+    material { " -- default --" }
+    length { 17.268 }
+    diameter { 3.4537 }
+    topdiameter { 3.4537 }
+    longlat { 12 8 }
+    capend { }
+    capstart { }
+  }
+  cylinder {
+    name { "cylinder02" }
+    base {
+      origin { (0.44944 17.303 0) }
+      orientation { (0 0 -0.97744 0.21121) }
+    }
+    material { " -- default --" }
+    length { 18.505 }
+    diameter { 3.701 }
+    topdiameter { 3.701 }
+    longlat { 12 8 }
+    capend { }
+    capstart { }
+  }
+  sphere {
+    name { "sphere02" }
+    base {
+      origin { (0 32.36 -9.6629) }
+    }
+    material { " -- default --" }
+    diameter { 14.743 }
+    longlat { 12 8 }
+  }
+  sphere {
+    name { "sphere03" }
+    base {
+      origin { (0 24.27 15.955) }
+    }
+    material { " -- default --" }
+    diameter { 17.36 }
+    longlat { 12 8 }
+  }
+  cylinder {
+    name { "cylinder03" }
+    base {
+      origin { (-0.67212 16.854 17.568) }
+      orientation { (0 0 0.98741 0.15815) }
+    }
+    material { " -- default --" }
+    length { 17.268 }
+    diameter { 3.4537 }
+    topdiameter { 3.4537 }
+    longlat { 12 8 }
+    capend { }
+    capstart { }
+  }
+  cylinder {
+    name { "cylinder04" }
+    base {
+      origin { (1.3503 17.303 17.568) }
+      orientation { (0 0 -0.97744 0.21121) }
+    }
+    material { " -- default --" }
+    length { 18.505 }
+    diameter { 3.701 }
+    topdiameter { 3.701 }
+    longlat { 12 8 }
+    capend { }
+    capstart { }
+  }
+  sphere {
+    name { "sphere04" }
+    base {
+      origin { (0 35.506 24.944) }
+    }
+    material { " -- default --" }
+    diameter { 4.5834 }
+    longlat { 12 8 }
+  }
+  cylinder {
+    name { "cylinder05" }
+    base {
+      origin { (0 35.056 24.045) }
+      orientation { (-0.97014 0 0 0.24254) }
+    }
+    material { " -- default --" }
+    length { 7.6405 }
+    diameter { 2 }
+    topdiameter { 2 }
+    longlat { 12 8 }
+    capend { }
+    capstart { }
+  }
+  sphere {
+    name { "sphere05" }
+    base {
+      origin { (0 35.506 -12.36) }
+    }
+    material { " -- default --" }
+    diameter { 8.0398 }
+    longlat { 12 8 }
+  }
+}
