@@ -1,0 +1,7 @@
+/**
+ * \page startpage Getting Started
+ * \section secgetstarted How to dive into Buildsystem development
+ * <p>First read \ref deps_sec and make sure your are able to compile and run Buildsystem</p>
+ *
+ * <p>TODO</p>
+ */
