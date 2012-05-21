@@ -1,5 +1,5 @@
 Other
-=============
+-----
 
 Your candle fades, as you walk into darkness...
 
