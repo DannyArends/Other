@@ -1,0 +1,709 @@
+\documentclass[11pt,a4paper,leqno]{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{verbatim}   % useful for program listings
+\usepackage{color}      % use if color is used in text
+\usepackage{subfigure}  % use for side-by-side figures
+\usepackage{float}
+\usepackage{Sweave}
+\usepackage{fullpage}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage[dutch]{babel}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\nouppercase{\leftmark}}
+\fancyhead[RO]{\rightmark}
+\fancyfoot[RO,LE]{\thepage}
+\begin{document}
+\setkeys{Gin}{width=2.4in,height=2.4in} %% <- change width of figures
+<<setseed,echo=FALSE>>= 
+set.seed(19696527)
+@
+\title{Introduction into and assignments for R}
+\author{
+Danny Arends\,$^{1,*}$,
+Ritsert C. Jansen\,$^1$\\
+$^{1}$Groningen Bioinformatics Centre, University of Groningen, NL.
+}
+
+\maketitle
+Version: 0.0.1
+\newpage
+\tableofcontents
+\newpage
+\section*{Required software}
+For Windows, Mac, Unix or Linux download and install the two following programs:
+\begin{itemize}
+\item Download {\bf Rgui} from http://cran.xl-mirror.nl \\
+The R programming language and several usefull libraries. More libraries are available online, and can be installed 
+using the graphic user interface of R or the command line. For more help on the R a
+\item Download {\bf Notepad++} from http://notepad-plus-plus.org/download \\
+Notepad++ is a text editor for editing text-documents and opening larger datasets it is open-source and has many 
+additional features, like syntax highlighting for several programming languages. Other IDE's can of course be used 
+as well.
+\end{itemize}
+Programming is more or less learned by doing, and trying and failing and frustration which are compensated by the eurika moments.
+Anyone able to take a problem and subdivide it into small step (like boil water) can learn how to program.
+Also good resources are available online. So just search. This document was created with R, so a big THANK YOU to the guys 
+from the R Develop, Latex, .Eps and Sweave teams.
+\\
+\\
+Also: Use version controll software - Nothing saved my ass as many a times. 
+\\
+\\
+Danny Arends,\\
+Feb 2011
+\newpage
+\section{Inside and about R}
+This section will try to give a shallow overview of the data and control structures present in the R programming language. We 
+start here because its important to know how to get help about features. Then we start with some very hardcore nerdy stuff but 
+i'll try to throw in as much examples and exercises as possible.
+\subsection{Getting help}
+Getting help in R is easy, if you are looking for a certain term/function do:
+\begin{verbatim} ??searchterm \end{verbatim}
+A window will pop-up with all the function of R that have the searchterm in the function name or in the description, once you 
+found the function you want to use (or think you need) do:
+\begin{verbatim} ?functionname \end{verbatim}
+This opens up a HTML page with a description of the function, BUT more importantly usually also an {\bf example}. 
+Also references to other related functions and datasets and the guy you can email in case you think you found a bug.
+\subsection{Types of data}
+R programs are composed of data and logic. Logic is provided in a file with commands or control structures 
+and is made by the programmer. (Thats you). Data for a computer however exists only as 0s and 1s. For us data is 
+provided by means of a file/additional hard drive or a direct download from another computer.
+So to fit a number like 100 into 32bits is best visualized by 32 light in a row some on some off. Programming 
+lanuages use datatypes to tell the cpu how many rows lights to use for a certain datatype.
+Also in R, data (text, labels, measurements, etc) is dived in specialized classes, this to optimize their 
+storage in terms of 0 and 1's that the computer uses internally.
+\begin{itemize}
+  \item[]{\bf null, NULL, NA, NAN, INF} Special cases in mathematics/programming (does not exist, exists but empty, unknown, not a number, infinite)
+  \item[]{\bf boolean} Value to respresent a boolean (TRUE / FALSE)
+  \item[]{\bf numeric} Numerical value (e.g. $0, 1, 0.25, pi$)
+  \item[]{\bf character} String value (e.g. $"Dog", "House", "Bike"$ but also vectors of Strings)
+  \item[]{\bf factor} A factorial (also called a enum or category variable holds variables that group objects (e.g. Plot1, Plot2, Plot3)
+  \item[]{\bf vector} A list of one of the above classes, and items from a vector can be looked up using [i] (e.g. with $myvector[5]$ we get the 5th element)
+  \item[]{\bf matrix} A matrix of one of the above classes and items from a matrix can be looked up using [r,c] (e.g. with $mymatrix[5,3]$ we get the element at the 5th row, 3rd column)
+  \item[]{\bf list} A list of other types, and items from a list can be looked up using [[i]] (e.g. with $mylist[[5]]$ we get the 5th element)
+  \item[]{\bf data.frame} Data.frame object is a matrix in which multiple complex types can be used together
+\end{itemize}
+Don't let all those types scare you, R will try and manage types for you, but sometimes it 
+goes wrong. We can use the numeric class to denot a sequence of numbers but we can also create 
+a sequence by using the seq function.\\
+<<data1,eval=TRUE,echo=TRUE>>=
+1:10 #One to a hundred
+seq(1,50,4) #One to a five hundred stepping 4
+@
+Then to create something of a string class we can concatenate it together with a String value (in quotes "). 
+The result will be a concatenated string we create e.g. names for our objects/individuals. To do this we 
+have two functions {\bf cat} and {\bf paste}. When we supply a sequence of values/strings cat creates one 
+big string while paste will create a vector of strings. An example:
+<<catpaste,eval=TRUE,echo=TRUE>>=
+cat("ind",1:10,sep=",")
+paste("ind",1:10,sep="")
+@
+And because any programming language is basically a big abbacus we can always do some basic math and logic testing.
+<<bmath,eval=TRUE,echo=TRUE>>=
+sqrt((1+5)/4)
+12/2 == 6
+1:10 < 7
+matrix(0,3,5)
+@
+\subsection{Controlling a program}
+Controlling a program is done by executing an algorithm, best to be thought of as a cook receipt. The computer dilligently follows 
+the steps and with each command manipulates the input data. These commands are written in the syntax of the programming language.
+Syntax differs from language to language, but algorithms should in theory not (but also do). Often algorithms are designed based on Design 
+Patterns (Common down to earth logic stuff we see in real life e.g. the procedureral steps to pay at a cash register (unload stuff,calculate 
+price, give money, get change) is in computer science known as the 'Transaction Design Pattern').
+The syntax of R is quite similar to a lot of known programming languages. A small overview:
+\begin{itemize}
+  \item[]{\bf <-, =} Assigning results to a variable
+  \item[]{\bf if(5 < 7)} test to evaluate if a certain condition is TRUE or FALSE
+  \item[]{\bf for(x in 1:70)} Loop through the sequence specified in the for condition giving x the value of 1 to 70
+  \item[]{\bf apply(data,1 or 2,fun)} Apply the function 'fun' to the (1 = rows or 2 = columns) of the data
+\begin{verbatim} 
+ data <- matrix(runif(50),10,5)
+ apply(data,1,mean) #Mean values per row
+ apply(data,2,mean) #Mean values per column
+\end{verbatim}   
+  \item[]{\bf while(x > 100)} While the condition is TRUE loop otherwise continue
+  \item[]{\bf stop("msg")} Stop execution with an error
+  \item[]{\bf <, >, <=, >=, ==, !=} Comparison operators
+  \item[]{\bf +, -, /, *} Mathematical operators
+  \item[]{\bf which, \%in\%, match, pmatch, grep } Matching and lookup functions
+  \item[]{\bf c(), cbind(), rbind()} Creating new structures by merging them together
+\end{itemize}
+Control structures shape the flow in a program. Based on descision points we can take 
+different paths inside a program. Also they allow us to manipulate data and store 
+intermediate results into {\bf variables}. An example:
+<<catpaste,eval=TRUE,echo=TRUE>>=
+numbers <- seq(1,50,4)
+sort(numbers,decreasing = TRUE)
+@
+this code assign the number 1,5,9..49 to the variable numbers and sorts them in a decreasing order.
+\begin{verbatim}
+ for(x in 1:100){ 
+  cat("Hello world\n") # \n : End the line
+ } 
+\end{verbatim}
+  This will print 100 times Hello World in a file, notice the \textbackslash n \textbackslash t 
+  those are special characters. \textbackslash n means begin a new line, \textbackslash t denotes 
+  a tab indentation. While we're at it: A bit of escaping. Lets say I want to print a ". However " 
+  normally is used to specify a string in R. But what if that string contains a ", well we can 
+  simply escape it with a \textbackslash. So an example to print: "\textbackslash into a file we do:
+\begin{verbatim} 
+  cat("\"\\",file="log.txt",append = TRUE) # :-)
+\end{verbatim}
+and to print "\textbackslash \textbackslash " \textbackslash " :
+\begin{verbatim} 
+  cat("\"\\\\\"\\\"",file="log.txt",append = TRUE) # :-(
+\end{verbatim}
+{\bf Assignments}\\
+  {\bf A0.0} How do we check if somthing is between 0 and 10, (and error otherwise)\\
+  {\bf A0.1} Use a for and a while loop from 1 to 1000 and add up all the numbers in a new variable
+  {\bf A0.2} Use cat and paste to print out a traingle of \#
+\begin{verbatim}
+1 #
+2 ##
+3 ###
+4 ####
+...
+12 ############
+\end{verbatim}
+
+\newpage
+\section{R and data}
+\subsection{static data and sequences}
+  TODO
+\subsection{Loading datasets}
+  Loading datasets is done with the function 
+\begin{verbatim} read.table("filename.txt") \end{verbatim}
+  this can either be a {\bf full} path to the file (e.g. "c:\textbackslash users\textbackslash 
+  danny\textbackslash files\textbackslash data\textbackslash dataset1.txt") or the {\bf relative} 
+  path of filename (e.g. "dataset1.txt"). To find the file when a relative path is used R searches 
+  in the local working directory. To circumvent typing the full path of a file first set the 
+  working dir using: 
+\begin{verbatim} setwd("c:/users/danny/files/data") #Note the \ is turned into a / \end{verbatim} 
+  To change the working directory. Most functions have their counterpart and {\bf setwd()} has 
+  {\bf getwd()} to get the current directory. After setting the correct work directory a datafile 
+  can be loaded by:
+\begin{verbatim} read.table("dataset1.txt") \end{verbatim} 
+  This will print out the contents of the datafile to the screen if succesfull. NORMALLY this is 
+  not the case. Additional parameters will have to be provided, so that R can make sense of data 
+  format. Parameters like {\bf header}, {\bf row.names}, {\bf sep}, {\bf fill}. It it wise fo first 
+  open the datafile in a text editor and check if there are any headers, rownames, empty lines, 
+  additional headers, comment lines, NA values. Most problems arise from data formatting and 
+  loading into memory.Some other solutions will be provided in other section (databases and 
+  standard formats).\\  
+  To store it also into a {\bf variable} we need to assign the output of the read.table function. 
+  To do this one uses the $<-$ assignment operator. 
+\begin{verbatim} mydataset1 <- read.table("dataset1.txt") \end{verbatim}   
+  To view the names of all files in a directory we can use the {\bf dir()} function list them. With 
+  the dir function and the for loop it is possible to load all datsets in a certain directory.
+\begin{verbatim} 
+  dirdata <- vector(length(dir()), mode="list")
+  file_number <- 0;
+  for(x in dir()){
+    dirdata[[file_number]] <- read.table(file=x)
+    file_number = file_number+1
+  }
+\end{verbatim}
+We can apply filters to only get files of a certain type (e.g. We can specify we want to loop over 
+text files).
+  \\
+  \\{\bf Assignments}\\
+  {\bf A1.0} Read the two datasets into the R environment (phenotypes.txt, genotypes.txt)\\
+  {\bf A1.1} Study the help of read.table (?read.table) and load in only half of the genotypes.txt file
+\subsection{Random data}
+  because R is the language for statistics random is a very important thing in R. Perhaps readers 
+  know that there are several kinds of randomness based on the events we are studying. The 
+  distribution a coin gives is usually binary, but has a strange outlier (on its side). And 
+  continues processes (if the exist) also show different null distributions. R has several functions 
+  available to generate random data:
+\begin{itemize}
+  \item[]{\bf sample(x, size, replace)} takes a sample of the specified size from the elements of x using either with or without replacement
+  \item[]{\bf runif(x,min,max)} Generates X random number from the uniform distribution between min and max
+  \item[]{\bf rnorm(n, mean = 0, sd = 1)} Generates N random number from the normal distribution with mean and sd
+\end{itemize}
+  These functions can be used to generate random numbers. However for repeatable experiments 
+  we sometimes want to 'fix our random numbers'. This can be done by setting a seed for the 
+  random number generator ({\bf set.seed}). Pick a number and pass it to the set.seed() function 
+  (Top of script). Every time the script runs (and the same random functions are called) the 
+  results will be the same.
+\begin{verbatim} set.seed(9876) \end{verbatim}
+\subsection{Writing output}
+  Writing output can be done to a file by using the write.table function. This function has a 
+  lot of options, but the most used options are {\bf sep} (separator between the values in a 
+  matrix, dataframe), {\bf quote} (use " to quote String values), {\bf file} (the name of the 
+  file to write). The first argument usually is the variable we want to write to disk.
+\begin{verbatim} write.table(matrix,file="mymatrix.txt",sep="\t") \end{verbatim} 
+  We can also use the {\bf cat} function to append to a file. In a logger style of fashion 
+  keeping track of steps in out algorithm. Take a look at the help of the cat function for 
+  all its options. In general its used:
+\begin{verbatim}
+ for(x in 1:100){ 
+  cat("Hello world\n",file="log.txt",append = TRUE) 
+ }
+\end{verbatim}
+This adds 100 times $Hello World$ to a log file.
+ {\bf Assignments}\\
+ {\bf A2.0} Use sample, runif, rnorm to generate a 20x5 matrix with random numbers. Save the matrices to variables with good names and write them to a file (?matrix, ?write.table)\\
+ {\bf A2.1} Use cat to print the numbers 1 to 500 in a file in such a way that (check that there is no trailing space behing the last number).
+ \begin{verbatim}
+ 1
+ 2 3
+ 4 5 6
+ 7 8 9 10
+ \end{verbatim}
+ {\bf A2.2} Escape and print the sentence to file: \textbackslash I say: " Escaping stuff is great."\textbackslash \\
+ {\bf A2.3} Extra: Use the traingle printing from A0.2 to print a Diamond shape into a file\\
+\newpage
+\section{Manipulating your data}
+  Let us start this section with an example. We create individual names using the {\bf paste} 
+  function. And then match the names in the two vectors onto each other.
+<<which,eval=TRUE,echo=TRUE>>=
+  names1 <- paste("ind",1:10,sep="")  #Create names
+  names2 <- paste("ind",5:15,sep="")  #Create names
+  names1 %in% names2
+  names2 %in% names1
+  which(names1 %in% names2)
+  which(names2 %in% names1)
+@
+  The \%in\% matches the elements of the left onto the right. By combing the \%in\% with the 
+  {\bf which} function we can get a vector containing the ordering of one in another. this 
+  technique can be used to match matrices onto each other. Because it happens a lot that 
+  different files have individuals / markers ordered in a different way. Or not all items 
+  are present in both files.
+
+\subsection{Creating functions}
+  To add a new (or your own) function to R is done by using the {\bf function} keyword. 
+  As an example we show a basic function that divides the input by two
+
+\begin{verbatim}
+ divide <- function(number){
+  res <- number/2
+  res
+ }
+\end{verbatim}
+This basic functions shows the main components of a function in R, the line 
+\begin{verbatim} res <- number/2 \end{verbatim} 
+  divides the user input by two and assigns the results to the $res$ variable, 
+  the in the next line this variable is returned. When we now execute our function
+<<divide_function,eval=TRUE,echo=FALSE>>=
+divide <- function(number){
+  res <- number/2
+  res
+}
+@
+<<divide,eval=TRUE,echo=TRUE>>=
+divide(100.3)
+divide(1:10)
+@ 
+  We can add the {\bf invisible()} function around the $res$ variable to prevent the result from being 
+  printed to the interface. 
+\begin{verbatim} invisible(result_variable) \end{verbatim}
+  This is extremely usefull when dealing with BIG data sets. Printing of 
+  thousands to millions of numbers or text can crash the Rgui.
+  \\
+  {\bf Assignments}\\
+  {\bf A3.0} Create a function to calculate the hypotenuse of a right angled triangle\\
+  {\bf A3.1} Create a function to calculate the faculty function (e.g. $5! = 5*4*3*2*1$)\\
+  {\bf A3.2} Create a function to calculate the row means of a matrix\\
+  {\bf A3.3} Create a function to asses if a number is prime (can only be divided by itself and 1 without any remainder)\\
+  {\bf A3.4} Extra: An LED display has 10 rows and 10 colums. Try to create a function to that takes a parameter specifying numeric which leds should be on
+\begin{verbatim}
+1       2       3       4       5       6       7       8       9       10      
+11      12      13      14      15      16      17      18      19      20      
+21      22      23      24      25      26      27      28      29      30      
+31      32      33      34      35      36      37      38      39      40      
+41      42      43      44      45      46      47      48      49      50      
+51      52      53      54      55      56      57      58      59      60      
+61      62      63      64      65      66      67      68      69      70      
+71      72      73      74      75      76      77      78      79      80      
+81      82      83      84      85      86      87      88      89      90      
+91      92      93      94      95      96      97      98      99      100
+
+> on <- c(1:10,seq(3,100,10),seq(7,100,10),91:100)
+> led(on)
+##########
+--#---#---
+--#---#---
+--#---#---
+--#---#---
+--#---#---
+--#---#---
+--#---#---
+--#---#---
+##########
+> on <- c(sample(100,30)) #See how nice :)
+> led(on)
+##----#---
+----------
+-------#--
+#----#--##
+-#-##-#-#-
+---##---#-
+-##-------
+---#---##-
+--#---#-#-
+-#--#-####
+\end{verbatim}
+\subsection{if, which, match, apply and \%in\%}
+Remember these functions, they are the most usefull functions in R.
+The can be used to make sub selections of data for you at minimal effort, so please 
+take a moment to familiarize yourself with these functions.
+\begin{verbatim}
+ #Selecting rows using a 'descision' function
+ mymatrix <- mymatrix[apply(mymatrix,1,function(x){<fun>}),]
+ 
+ #Selecting columns using a 'descision' function
+ mymatrix <- mymatrix[,apply(mymatrix,2,function(x){<fun>})]
+ 
+ #replace <fun> with something like:
+ mean(x) > 5  #Select rows/cols with mean larger then 5
+ sd(x) > 3    #Select row/cols with sd larger then 5
+\end{verbatim}
+Also the \%in\% function which can do matching/sorting based on reference vectors (imagine 2 files where 
+the labels are mixed). TODO
+  \\
+  {\bf Assignments continued}\\
+  {\bf A3.5} Study the 5 functions, and try them out\\
+\section{Displaying your data}
+  plotting images or statistics of your data is one of the main features of R. Plots 
+  can be saved by specifing an output file with a {\bf device}. The device is in our 
+  case usualy a image type: like PNG, JPG, GIF, EPS. For bioinformatics publications 
+  usually a combination of latex and eps figures are used. But for normal use jpg or 
+  png suffices. Fortunately for us there is not a lot of difference between the device 
+  routines. To open a device:
+\begin{verbatim} png(filename="myplot.png",bg="white")  \end{verbatim}
+  Then any plot routine can be called (e.g. plot, image, heatmap, boxplot, etc) also 
+  points, arrows and legends can be added to the plot window.
+  To finalize the plot and write it to disk one uses the $dev.off()$ routine.
+  Colors can be made transparant using the rgb() function, but R also provides some 
+  build in color ranges: rainbow(n, alpha),heat.colors(n, alpha), terrain.colors(n, alpha), 
+  topo.colors(n, alpha), cm.colors(n, alpha), gray(n). These functions all have an n 
+  which is the number of colors generated (usually ~10 to 100), but also the color 
+  ranges can be made semi transparant setting the alpha lower then 1.
+  To illustrate plotting a colorfull line to a myplot.png file in the example below:
+\begin{verbatim} 
+ png(filename="myplot.png",bg="white")
+ image(matrix(rnorm(250),50,50),main="image example",col=rainbow(10))
+ dev.off()
+\end{verbatim}
+\begin{figure}[ht]
+\subfigure[image example]{
+<<fig=TRUE,echo=FALSE>>=
+image(matrix(rnorm(250),50,50),main="image example",col=rainbow(10))
+@
+}
+\subfigure[Math can be beautiful...]{
+<<fig=TRUE,echo=FALSE>>=
+x <- y <- seq(-4*pi, 4*pi, len=27)
+r <- sqrt(outer(x^2, y^2, "+"))
+image(z = z <- cos(r^2)*exp(-r/6), col=gray((0:32)/32),main="image function")
+image(z, axes = FALSE, main = "Math can be beautiful...",
+      xlab = expression(cos(r^2) * e^{-r/6}))
+@
+}
+\end{figure}
+  The main plotting functions are:
+\begin{itemize}
+  \item[]{\bf plot()} vector and vector comparison plots with the ability to add {\bf points()} and {\bf lines()} and {\bf legend()}
+  \item[]{\bf boxplot()} basic statistics (vector and matrix)
+  \item[]{\bf heatmap()} basic statistics (vector and matrix) (NOTE: Scale parameter is normally set to 
+  TRUE, a better representiation of data is given by scale="none")
+  \item[]{\bf hist()} basic statistics (vector and matrix) option to add plots
+  \item[]{\bf image()} 2 Dimensional image plotting with the ability to add {\bf points()} and {\bf lines()} and {\bf legend()}
+  \item[]{\bf contour()} 2 Dimensional contour plot with the option to add isoterms
+  \item[]{\bf persp()} Perspective plot, like a 3D landscape (with optional colors) 
+  \item[]{\bf ?par} Help with all the possible parameters you can supply to  plotting window in R 
+\end{itemize}
+
+\begin{figure}[ht]
+\subfigure[plot example]{
+<<fig=TRUE,echo=FALSE>>=
+plot(runif(1000)+5,main="plot function")
+@
+}
+\subfigure[plot with lines]{
+<<fig=TRUE,echo=FALSE>>=
+plot(rnorm(1000)+5,main="plot function",type="l",col="red")
+@
+}
+\end{figure}
+  Some examples of plot routines in R. We see the plot function and the boxplot function, 
+  which can plot vectors as well as matrices. The histogram function that can be used to 
+  visually compare several distributions.
+\begin{figure}[ht]
+\subfigure[boxplot function]{
+<<fig=TRUE,echo=FALSE>>=
+boxplot(runif(1000)+5,main="boxplot function",type="l",col="gray")
+@
+}
+\subfigure[hist function]{
+<<fig=TRUE,echo=FALSE>>=
+hist(rnorm(1000)+5,main="hist function",type="l",col=rgb(1, 0, 0))
+hist(runif(1000)*6+2,main="hist function",type="l",col=rgb(0, 0, 1),add=TRUE)
+@
+}
+\end{figure}
+\subsection{Describe and Explain visual data}
+R offers many ways to customize plotting, we can plot to several output formats to enable large plots (A0, A1 A2).
+But we have more options to add visual information to a plot
+\begin{itemize}
+  \item[]{\bf legend()} Ability to add a legend to a plot
+  \item[]{\bf axis()} Ability to change the axis of a plot
+  \item[]{\bf arrows()} Add an arrow to focus viewer attention 
+  \item[]{\bf points() / lines()} Basic points/lines can be used to spice up a plot
+\end{itemize}
+lets show some examples, first a small legend to describe what we plot:
+
+\begin{verbatim}
+plot(sin(0:10),type="l",lty=1,col="red",lwd=2,main="Legend example")
+points(cos(0:10),type="l",lty=2,col="green",lwd=2)
+legend("topright",c("sin(x)","cos(x)"),lty=1:2,col=c("red","green"),lwd=2)
+\end{verbatim}
+And we can add arrows to point at important parts of a plot:
+\begin{verbatim}
+x <- runif(12)                                  #12 random numbers
+plot(x,pch=20,col="blue",main="Arrow example")  #plot the random numbers
+arrows(1, 0, 1, x[1]-0.01, col="red",lwd=2)     #point to the first point
+arrows(5, 0, 5, x[5]-0.01, col="red",lwd=2)     #point to the fifth point
+\end{verbatim}
+We show also the plots this code creates.
+\begin{figure}[ht]
+\subfigure[Legend]{
+<<fig=TRUE,echo=FALSE>>=
+plot(sin(0:10),type="l",lty=1,col="red",lwd=2,main="Legend example")
+points(cos(0:10),type="l",lty=2,col="green",lwd=2)
+legend("topright",c("sin(x)","cos(x)"),lty=1:2,col=c("red","green"),lwd=2)
+@
+}
+\subfigure[Arrows]{
+<<fig=TRUE,echo=FALSE>>=
+x <- runif(12)                                  #12 random numbers
+plot(x,pch=20,col="blue",main="Arrow example")  #plot the random numbers
+arrows(1, 0, 1, x[1]-0.01, col="red",lwd=2)     #point to the first point
+arrows(5, 0, 5, x[5]-0.01, col="red",lwd=2)     #point to the fifth point
+@
+}
+\end{figure}
+  {\bf Assignments}\\
+  {\bf A4.0} Plot the genotypes.txt using the $image$ function\\
+  {\bf A4.1} Create a $boxplot$ showing the trait distributions (from phenotypes.txt)\\
+  {\bf A4.2} Create a heatmap (?heatmap) of the genotypes.txt (cluster only the rows, Colv=NA) and write the heatmap to a PNG file\\
+  {\bf A4.3} Plot for trait 1 the genotype values colored by genotype
+  {\bf A4.4} Add a legend to a line plot of your own choice (at least 2 line types)
+
+\newpage
+\section{Libraries}
+To collaborate on data R provides the 'package'. A package is a stabile/tested version of code developed by other scientists.
+A package can contain new datastructures (e.g. store population), data (datasets can be packed with an R-packages) and functions.
+To load a library use:
+\begin{verbatim} library(stats) \end{verbatim}
+Or \begin{verbatim} require(stats) \end{verbatim}
+Also the standard libraries of R contains many nice functions like for example the Sys functions, which can be used to collect statistics about your own program
+\begin{verbatim}
+ s <- proc.time()
+ #Call Really long function
+ e <- proc.time()
+ cat("Time:",(e-s)[[3]],"Seconds\n")                      #Time information
+ cat("Used:",memory.size(),"/",memory.limit(),"Mb\n")     #Memory information
+\end{verbatim}
+The new functions the add are related to biology/statistics/engineering/ai etc. So there is a long list of packages available
+(for a full list see http://cran.r-project.org/ link Packages). Some packages that might come in handy:
+\begin{itemize}
+  \item[]{\bf snow} Single workstation of Computers - Adds the ability to use multiple cores/computers for certain algorithms
+  \item[]{\bf RCurl} - Adds the ability to read and interact with webpages
+\end{itemize}
+  {\bf Assignments}\\
+  {\bf A5.0} Install the 2 packages into R ( top menu, packages, install packages(s) ) and load them into R, see what functions they offer by ??snow ??RCurl\\
+\section{Basic Statistics}
+  R is the statistical language and thus provides a lot of standard functions related to statistics. Most of these functions can be 
+  used on vectors and matrices. Some need to be $apply$'ed to a matrix
+\begin{itemize}
+  \item[]{\bf sd()} Standard deviation of a vector of numerics
+  \item[]{\bf mean()} Mean value of a vector of numerics
+  \item[]{\bf median()} Median value of a vector of numerics
+  \item[]{\bf cor(x)} Correlation matrix of matrix x (NOTE: parameter use="")
+  \item[]{\bf cor(x,y)} Correlation between two vectors of numerics (NOTE: parameter use="")
+  \item[]{\bf cov(x)} Covariation matrix of matrix x (NOTE: parameter use="")
+  \item[]{\bf cov(x,y)} Covariation between two vectors of numerics (NOTE: parameter use="")
+\end{itemize}
+The descriptive statistics can be usefull to get hands on with data (e.g. detect outliers, find batch effects). Also plotting the 
+correlation between individual samples can give an indication of the quality of the whole dataset.
+However R also contains a scala of modelling tools like: Fitting and Testing models to data
+Functions that model data take a model function description, so lets first look at an example. We create $y$ holding a lineair set of 
+response variables, we add a lineair effect of 0.5 and la small amount of noise (y1) and do the same again only a smaller effect and 
+a lot more noise. Finally x is going to be our predictor.
+<<lmexample,eval=TRUE,echo=TRUE>>=
+y1 <- runif(100)*5+(1:100)*0.5
+y2 <- runif(100)*20+(1:100)*0.01
+x <- 1:100
+lm(y1~x)
+lm(y2~x)
+estimatesy1 <- lm(y1~x)[[1]][1]+lm(y1~x)[[1]][2]*1:10
+estimatesy1
+estimatesy2 <- lm(y2~x)[[1]][1]+lm(y2~x)[[1]][2]*1:10
+estimatesy2
+@
+We see that the lm function comes up with the parameter 0.5 as slope and 2.5 for the intercept of y1. We also show the way to quickly 
+get estimates for the first 10 values of function.
+\begin{figure}[ht]
+\subfigure[Good fit lineair model]{
+<<fig=TRUE,echo=FALSE>>=
+plot(y1,col="blue",pch=20,main="Estimated regression line")
+lines(lm(y1~x)[[1]][1]+lm(y1~x)[[1]][2]*1:100,col="red",lwd=2)
+@
+}
+\subfigure[Bad fit lineair model]{
+<<fig=TRUE,echo=FALSE>>=
+plot(y2,col="blue",pch=20,main="Estimated regression line")
+lines(lm(y2~x)[[1]][1]+lm(y2~x)[[1]][2]*1:100,col="red",lwd=2)
+@
+}
+\end{figure}
+When we now want to asses the fit of our simple lineair 'model' we can simply calculate the 
+deviation between the estimated and observed values for both models. But R also has a build 
+in function to do this hypothesis testing for you.
+\begin{itemize}
+  \item[]{\bf lm} lineair models
+  \item[]{\bf glm} Generalized lineair models
+  \item[]{\bf t.test} Basic (one or two sided) Students T-test
+  \item[]{\bf anova} Analysis of variance
+  \item[]{\bf chisq.test} Chi square test for goodness for fit
+\end{itemize}
+Many more tests are available, and should be applied based on the underlying distribution of your data.
+Another simple example in which we ask if two random distributions (r1 and r2) have the same mean (Equal) or if the mean deviates between the two groups (Different),
+For this we can use a simple two sided t.test the 0-hypothesis is that both distributions are from the same population (Equal)
+<<lmexample,eval=TRUE,echo=TRUE>>=
+r1 <- runif(100)*5
+r2 <- runif(100)*5
+t.test(r1,r2)$p.value #Above 0.05 so we accept the 0-hypothesis
+@
+  {\bf Assignments}\\
+  {\bf A6.0} At each marker (read the table from genotypes.txt) list the individuals in each group (1 and 2)\\
+  {\bf A6.1} Now (At each marker) split the phenotypes based on genotype group membership and calculate phenotype means for both groups\\
+  {\bf A6.2} Use a plot (X-axis marker,Y Axis phenotype mean, so in total we create 24 * plots) to visualize (At each marker) the 2 phenotype means \\
+  {\bf A6.3} runif(1000) drawn from the same distribution as rnorm(1000,m=0,sd=0.5)\\
+  {\bf A6.4} For trait 1 use a $t.test$ function to estimate if there is a difference in trait mean between the genotype groups at each marker. 
+  (so create a vector of length markers with at each position the p.value from the t.test function)\\
+  
+\newpage
+\section{R meets biology}
+Some packages designed especially for biology / bioinformatics will be discussed in this chapter. a super short 
+overview of the packages that will be discussed:
+\begin{itemize}
+  \item R/qtl - QTL mapping in experimental crosses
+  \item iqtl (development version from Danny) - Additional script and tools for interactive qtl discovery
+  \item Molgenis database (not a package) but provides an R-api to connect to a molgenis/sql database
+  \item BioConductor - Collection of tools for bioinfomatics.
+\end{itemize}
+R meets biology in a lot of ways, mostly in statistical modeling, but also on the field of big data 
+more and more packages are available. Some microarrays can only be read by using R or C routines.
+However the idea is that by using statistical modeling we can describe (and predict) any biological event
+assuming perfect knowledge.
+  \\
+  \\
+  {\bf Assignments}\\
+  {\bf A7.0} Look up some of the packages mentioned here and install them.\\
+\subsection{QTL analysis}
+  Well actually you already found your first QTL without even knowning. In assignment A4.3 We asses if the genotype at a certain marker is 'associated' 
+  with a cretain trait. We used a basic T-Test on the raw values of the traits. However if one knows anything about a t-test it is that it should be 
+  applied to normally distributed data. However a histogram plot of the first phenotype shows a distribution that if far from normal.
+  We could think of a way to fix this ourselves. This would be easiest by modifying our model, so lets try that now. The data that you obtained is 
+  LCMS data, which means we measure protein abundance in a certain sample, when we look at the numbers we see very low numbers, 0,0,10,18,etc and
+  very high numbers (1.000 to 10.000+). So perhaps using this trait quanititatively doesn't really make sense. a model in terms of expressing 
+  protein or does not express protein would be much more logical.
+  \\
+  \\
+  {\bf Assignments continued}\\
+  {\bf A7.1} Plot a histogram of the data, and think of way (and implement it) to automatically deterime a good cut-off value for each trait (HINT:  NOT < mean < EXPRESSED)\\
+  {\bf A7.2} Create a new phenotype matrix (and save it to disk), transforming the raw values into 0 (not expressed) and 1 (expressed)\\
+  {\bf A7.3} Check that the new phenotype matrix represents the old phenotype matrix (Show that there is 'perfect' correlation between the new and the old matrix)\\
+  {\bf A7.4} Plot for trait 1 the QTL profile using the t.test (this assignment is the same as 4.3 but now plot the -log10(p.values)\\
+  {\bf A7.4} Add to the plot for trait 1 the QTL profile using the t.test using the phenotype matrix from A7.3\\
+  
+\subsection{Analysis of genetic maps}
+  To come soon..
+
+\newpage
+\section{R and the WWW}
+  To come soon..
+\subsection{RCurl}
+  RCurl adds the ability to browse and interact with web-pages. This gives R the ability to screen scrape data from the internet. This is a commonly used technique 
+  when data from databases with poor API's needs to be incorporated into an analysis. Query's are send to the database containing 'Identifiers' (e.g. common names, 
+  geneIDs, etc). The page that is returned is analyzed for keywords and if additional data is found in the database this is stored. The stored data can then be 
+  used to perform additional meta analysis on, or add information to plots/networks. R's options for this are limited and normally a 'RexEx' language like perl 
+  is used to screen scrape the data and provide a file with pre-formatted data to R.
+  \\
+  \\
+  {\bf Assignments}\\
+  {\bf A8.0} Load http://www.google.com using the RCurl package\\
+  {\bf A8.1} Create a function to retrieve the Google homepage image and save it to the hard drive\\
+  {\bf A8.2} Create a function post a searchterm to Google\\
+  {\bf A8.3} Screenscape the return of A8.2 and parse out the hyperlinks google returns\\
+\subsection{Databases}
+  To come soon..
+
+\newpage
+\section{R Libraries and packaging}
+Addtional options can be specified via the command line to install additional packages, or compile your own:
+\begin{verbatim}
+R CMD INSTALL <packagename>
+R CMD BUILD <packagename> --binary --force
+R CMD CHECK <packagename>
+\end{verbatim}
+\subsection*{Package structure}
+\begin{itemize}
+\item Directory: data, contains data files supplied with the package
+\item Directory: man, contains manuals describing the R functions
+\item Directory: r, contains R code files
+\item Directory: src, contains C / C++ code files
+\item Directory: tests, Additional tests to be executed (not in manuals)
+\item File: DESCRIPTION, package description and dependencies
+\end{itemize}
+
+\newpage
+\section{R cheat sheet}
+TO COPY
+
+\newpage
+\section{Some examples}
+\subsection{Example of an R script:}
+\begin{verbatim}
+#R script
+#Created by ...
+#First written: 01-01-2011
+#Last modified: 01-01-2011
+#
+#Contains:
+#Functionname - Description
+
+#Divide function
+#number: input that is divided by 2
+#return: invisible return of answer
+divide <- function(number){
+  res <- number/2
+  invisible(res)
+}
+
+#Test
+test_divide <- function(){
+  res <- divide(15)
+  if(res!=7.5) stop("failed: test_divide")
+  cat("succesfull: test_divide")
+}
+\end{verbatim}
+\subsection{Basic statistics example}
+TODO
+\subsection{Data reading and writing example}
+TODO
+\subsection{HTTP / RCurl example}
+TODO
+\subsection{QTL example}
+TODO
+\subsection{Logger example}
+TODO
+\subsection{Calling R from command line}
+TODO
+\end{document}
