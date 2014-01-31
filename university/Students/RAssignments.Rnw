@@ -237,7 +237,7 @@ people on larger projects it is impossible to keep track of everything unless th
 \section{R and data}
 \subsection{Loading data sets}
   Loading data sets is done with the functions read.table and read.csv. They are both similar in
-  the options they provide for loading data. but load.csv is generally faster by a factor of two to 
+  the options they provide for loading data. But load.csv is generally faster by a factor of two to 
   four in loading large data sets. An example to load filename.txt into R:
 
 \begin{verbatim} read.table("filename.txt") \end{verbatim}
@@ -258,7 +258,7 @@ people on larger projects it is impossible to keep track of everything unless th
   sense of data format. 
 
   Parameters that can be used for this purpose are: {\bf header} - does the data contain column names, 
-  {\bf row.names} - same for row names, {\bf sep} - how does R need to split data, {\bf fill} - Should 
+  {\bf row.names} - same for row names, {\bf sep} - how does R need to split data, {\bf fill} - should 
   lines that are to short be padded. 
 
   It it a good idea to first open the data file in a text editor and check if there are any headers, 
