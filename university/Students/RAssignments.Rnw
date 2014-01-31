@@ -86,10 +86,11 @@ Programming languages use data types to tell the CPU how many rows lights to use
 Also in R, data (text, labels, measurements, etc) is dived in specialized classes, this to optimize their 
 storage in terms of 0 and 1's that the computer uses internally.
 \begin{itemize}
-  \item[]{\bf null, NULL, NA, NaN, Inf} Special cases in mathematics/programming (does not exist, exists but empty, unknown, not a number, infinite)
+  \item[]{\bf NULL, NA, NaN, Inf} Special cases in mathematics/programming (absent (not set) but not missing, missing, not a number, infinite)
   \item[]{\bf boolean} Value to represent a boolean (TRUE / FALSE)
   \item[]{\bf numeric} Numerical value (e.g. $0, 1, 0.25, pi$)
   \item[]{\bf character} String value (e.g. $"Dog", "House", "Bike"$ but also vectors of Strings)
+  \item[]{\bf numeric(0), character(0)} Numeric and character vectors that exist, but have length of 0
   \item[]{\bf factor} A factorial (also called a enum or category variable holds variables that group objects (e.g. Plot1, Plot2, Plot3))
   \item[]{\bf vector} A list of one of the above classes, and items from a vector can be looked up using [i] (e.g. with $myvector[5]$ we get the 5th element)
   \item[]{\bf matrix} A matrix of one of the above classes and items from a matrix can be looked up using [r,c] (e.g. with $mymatrix[5,3]$ we get the element at the 5th row, 3rd column)
