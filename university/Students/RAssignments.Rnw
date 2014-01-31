@@ -450,10 +450,10 @@ take e.g. column 2 from file one and match that to e.g. column 4 in the other fi
 \section{Displaying your data}
   Creating nice images or summary statistics plots of your data is one of the main features of R. 
   Visual output (plots / images) can be saved by specifying an output file with a {\bf device}. 
-  The device in our case is usually a image type: like PNG, JPG, GIF, EPS. For bio informatics 
+  The device in our case is usually a image type such as: PNG, JPG, GIF, EPS. For bio informatics 
   publications usually a combination of latex text files and eps figures are used. But for normal 
   use jpg or png quality suffices. Fortunately there are not a lot of difference between the device 
-  routines. To open a device you can simply call its name and add parameters to control things like 
+  routines. To open a device you can simply call its name and add parameters to control things such as 
   height, width and number of pixels:
 \begin{verbatim} png(filename="myplot.png",bg="white")  \end{verbatim}
   Then any plot routine can be called (e.g. plot, image, heatmap, boxplot, etc) also 
@@ -495,7 +495,7 @@ image(z, axes = FALSE, main = "Math can be beautiful...",
   \item[]{\bf hist()} basic statistics (vector and matrix) option to add plots
   \item[]{\bf image()} 2 Dimensional image plotting with the ability to add {\bf points()} and {\bf lines()} and {\bf legend()}
   \item[]{\bf contour()} 2 Dimensional contour plot with the option to add isotherm
-  \item[]{\bf persp()} Perspective plot, like a 3D landscape (with optional colors) 
+  \item[]{\bf persp()} Perspective plot, this is similar to a 3D landscape (with optional colors) 
   \item[]{\bf ?par} Help with all the possible parameters you can supply to  plotting window in R 
 \end{itemize}
 
@@ -583,7 +583,8 @@ A package can contain new data structures (e.g. store population), data (data se
 To load a library use:
 \begin{verbatim} library(stats) \end{verbatim}
 Or \begin{verbatim} require(stats) \end{verbatim}
-Also the standard libraries of R contains many nice functions like for example the Sys functions, which can be used to collect statistics about your own program
+Also the standard libraries of R contains many nice functions for example the {\bf proc} and {\bf sys} functions. These functions can 
+be used to collect statistics about your own program such as time running, memory used and other statistics.
 \begin{verbatim}
  s <- proc.time()
  #Call Really long function
@@ -591,11 +592,15 @@ Also the standard libraries of R contains many nice functions like for example t
  cat("Time:",(e-s)[[3]],"Seconds\n")                      #Time information
  cat("Used:",memory.size(),"/",memory.limit(),"Mb\n")     #Memory information
 \end{verbatim}
-The new functions the add are related to biology/statistics/engineering/AI etc. So there is a long list of packages available
-(for a full list see http://cran.r-project.org/ link Packages). Some packages that might come in handy:
+New functions get added to R on an almost daily basis. Packages added to CRAN and BioConductor are normally related to biology / 
+statistics / engineering / AI etc. There is a long list of packages available (for a full list see http://cran.r-project.org/ link 
+Packages). Some packages that might come in handy:
 \begin{itemize}
   \item[]{\bf snow} Single workstation of Computers - Adds the ability to use multiple cores/computers for certain algorithms
+  \item[]{\bf parallel} - Similar to the SNOW package, but a core package for R versions 3 and higher
   \item[]{\bf RCurl} - Adds the ability to read and interact with web pages
+  \item[]{\bf qtl} - R/qtl, adds many functions for QTL mapping and genetic map quality controlling
+  \item[]{\bf mixtools} - Package for handling complex mixtures and fitting models to distributions
 \end{itemize}
   {\bf Assignments}\\
   {\bf A5.0} Install the 2 packages into R ( top menu, packages, install packages(s) ) and load them into R, see what functions they offer by ??snow ??RCurl\\
@@ -613,7 +618,7 @@ The new functions the add are related to biology/statistics/engineering/AI etc. 
 \end{itemize}
 The descriptive statistics can be useful to get hands on with data (e.g. detect outliers, find batch effects). Also plotting the 
 correlation between individual samples can give an indication of the quality of the whole data set.
-However R also contains a scala of modeling tools like: Fitting and Testing models to data
+However R also contains a scala of modeling tools such as: Fitting and Testing models to data
 Functions that model data take a model function description, so lets first look at an example. We create $y$ holding a linear set of 
 response variables, we add a linear effect of 0.5 and la small amount of noise (y1) and do the same again only a smaller effect and 
 a lot more noise. Finally x is going to be our predictor.
