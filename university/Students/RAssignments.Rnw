@@ -23,11 +23,11 @@ set.seed(19696527)
 @
 \title{Introduction into and assignments for R}
 \author{
-Danny Arends\,$^{1,*}$,
-Konrad Zych\,$^{1,2}$,
+Danny Arends\,$^{1,*}$,\\
+Konrad Zych\,$^{1,2}$,\\
 Ritsert C. Jansen\,$^1$\\
-$^{1}$Groningen Bioinformatics Centre, University of Groningen, NL.
-$^{2}$Faculty of Biochemistry, Biophysics and Biotechnology, Jagiellonian University in Kraków, PL.\\
+$^{1}$Groningen Bioinformatics Centre, University of Groningen, NL.\\
+$^{2}$Faculty of Biochemistry, Biophysics and Biotechnology, Jagiellonian University in Krak\'ow, PL.\\
 }
 
 \maketitle
@@ -46,10 +46,14 @@ Notepad++ is a text editor for editing text-documents and opening larger data se
 additional features, like syntax highlighting for several programming languages. Other IDE's can of course be used 
 as well.
 \end{itemize}
-Programming is more or less learned by doing, and trying and failing and frustration which are compensated by the eureka moments.
-Anyone able to take a problem and subdivide it into small step (like boil water) can learn how to program.
-Also good resources are available online. So just search. This document was created with R, so a big THANK YOU to the guys 
-from the R Develop, Latex, .Eps and Sweave teams.
+Programming is in my humble opinion only learned by doing. Through trying, failing and frustration which are compensated 
+by the few eureka moments. I believe that anyone able to take a problem and subdivide it into small step (like boil water) 
+can learn how to program in a reasonable amount of time. Additionally for learning R there are many good resources are 
+available online, so just search for help when you get stuck or if you want to know something more about some of the 
+topics discussed here.
+
+This document is created with Sweave and R, so a big \emph{THANK YOU} to the guys from the R Development team, the people 
+who created Latex, .Eps and Sweave.
 \\
 \\
 Also: Use version control software - Nothing saved my ass as many a times. 
@@ -59,9 +63,10 @@ Danny Arends,\\
 Feb 2011
 \newpage
 \section{Inside and about R}
-This section will try to give a shallow overview of the data and control structures present in the R programming language. We 
-start here because its important to know how to get help about features. Then we start with some very hardcore nerdy stuff but 
-i'll try to throw in as much examples and exercises as possible.
+This section will try to give a broad but shallow overview of the data and control structures provided by the R programming 
+language. We start by learning how to get help, because its important to know how to get help about features and functions 
+in R. Then some hardcore nerd stuff about data structures and control flow but I will try to throw as much examples as 
+possible. Each chapter ends with exercises to practice the theory presented in practice.
 \subsection{Getting help}
 Getting help in R is easy, if you are looking for a certain term/function do:
 \begin{verbatim} ??searchterm \end{verbatim}
