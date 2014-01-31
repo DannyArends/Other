@@ -145,9 +145,20 @@ can be used to build complex behaviours. This control flow plus the ability to s
 intermediate results and based on these intermediate results or user input perform a new task. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 numbers <- seq(1,50,4)
-snumbers <- sort(numbers,decreasing = TRUE)
+sort(numbers,decreasing = TRUE)
 @
 this code assign the number 1,5,9..49 to the variable numbers and sorts them in a decreasing order.
+An example of using an IF statement can look soething like this:
+\begin{verbatim}
+  result <- runif(1)*10 #Random number between 0 and 10
+  if(result < 5){
+    print("lower")
+  }else{
+    print("higher")
+  }
+\end{verbatim}
+This generates a random number between 1 and 10 and then tests IF this value is higher or lower then 5, and outputs 
+the text higher or lower accordingly.
 \begin{verbatim}
  for(x in 1:100){ 
   cat("Hello world\n") # \n : End the line
