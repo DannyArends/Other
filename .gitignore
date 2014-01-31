@@ -31,3 +31,6 @@ pkg
 qtl*gz
 *.exe
 *.EXE
+*.pdf
+*.aux
+*.toc
