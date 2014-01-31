@@ -121,15 +121,15 @@ sqrt((1+5)/4)
 matrix(0,3,5)
 @
 \subsection{Controlling a program}
-Controlling a program is done by executing an algorithm, best to be thought of as a cook receipt. The computer diligently follows 
-the steps and with each command manipulates the input data. These commands are written in the syntax of the programming language.
-Syntax differs from language to language, but algorithms should in theory not (but also do). Often algorithms are designed based on Design 
+Controlling a program is done by executing an algorithm, best to be thought of as a "cooking receipt". The computer diligently follows 
+the receipt and with each command manipulates the input data. These commands are written in the syntax of the programming language.
+Syntax differs from language to language, but algorithms should in theory not (but they often do). Algorithms are often designed based on Design 
 Patterns (Common down to earth logic stuff we see in real life e.g. the procedural steps to pay at a cash register (unload stuff,calculate 
 price, give money, get change) is in computer science known as the 'Transaction Design Pattern').
 The syntax of R is quite similar to a lot of known programming languages. A small overview:
 \begin{itemize}
   \item[]{\bf <-, =} Assigning results to a variable
-  \item[]{\bf if(5 < 7)} test to evaluate if a certain condition is TRUE or FALSE
+  \item[]{\bf if(5 < 7)} Test to evaluate if a certain condition is TRUE or FALSE
   \item[]{\bf for(x in 1:70)} Loop through the sequence specified in the for condition giving x the value of 1 to 70
   \item[]{\bf apply(data,1 or 2,fun)} Apply the function 'fun' to the (1 = rows or 2 = columns) of the data
 \begin{verbatim} 
