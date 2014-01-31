@@ -104,11 +104,11 @@ use start{\bf : }end to denote a sequence of numbers, or create a sequence by us
 1:10 #One to a hundred
 seq(1,50,4) #One to a fifty stepping 4
 @
-To create an object of a string class, we can concatenate it together with a String value. String values are 
-surrounded by quotes ", also when R print them to the screen. If we concatenate a number and a string, the result 
-will be a single string with the string concatenated to the numeric value. This can be used to create e.g. names 
-for our objects/individuals. For this we have two functions {\bf cat} and {\bf paste}. When we supply a sequence 
-of values/strings {\bf cat} creates one big string while {\bf paste} will create a vector of strings. An example:
+To create an object of a string class, we can join it together with a String value. String values are 
+surrounded by quotes ", also when R print them to the screen. In programming, joining strings is called concatenation. 
+If we join a number and a string, the result will be a single string with the string concatenated to the numeric value. 
+This can be used to create e.g. names for our objects/individuals. For this we have two functions {\bf cat} and {\bf paste}. 
+When we supply a sequence of values/strings {\bf cat} creates one big string while {\bf paste} will create a vector of strings. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 cat("ind",1:10,sep=",")
 paste("ind",1:10,sep="")
