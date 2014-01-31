@@ -42,9 +42,9 @@ For Windows, Mac, Unix or Linux download and install the two following programs:
 The R programming language and several useful libraries. More libraries are available online, and can be installed 
 using the graphic user interface of R or the command line. For more help on the R a
 \item Download {\bf Notepad++} from http://notepad-plus-plus.org/download \\
-Notepad++ is a text editor for editing text-documents and opening larger data sets it is open-source and has many 
-additional features, like syntax highlighting for several programming languages. Other IDE's can of course be used 
-as well.
+Notepad++ is a text editor for editing text documents and opening (large) data sets. Notepad++ is open-source and free 
+and has many additional features, such as syntax highlighting for several programming languages, spell check, regular 
+expression based find and replace, and much more. Other IDE's can of course be used as well.
 \end{itemize}
 Programming is in my humble opinion only learned by doing. Through trying, failing and frustration which are compensated 
 by the few eureka moments. I believe that anyone able to take a problem and subdivide it into small step (like boil water) 
