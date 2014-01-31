@@ -190,9 +190,9 @@ Coding is like any research, one needs to be diligent and precise. This means st
 the logical flow of a program is visible at first glance. Also this implies well documented code, and adding comments 
 when things might be unclear to others.
 
-Furthermore it is common practice to exercise a kind of ownership. So people know who wrote the code and e.g. who is 
+Furthermore, it is a common practice to exercise a kind of ownership. So people know who wrote the code and e.g. who is 
 currently maintaining it. This might seem like a waste of time now, and it is. But when working with more 
-people on larger projects it is impossible to keep track of everything, and thus documentation becomes vital.
+people on larger projects it is impossible to keep track of everything unless the code is well documented.
 \\\\
 {\bf Assignments}
 \\
