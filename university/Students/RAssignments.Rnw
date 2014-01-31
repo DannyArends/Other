@@ -616,12 +616,13 @@ Packages). Some packages that might come in handy:
   \item[]{\bf cov(x)} Co-variation matrix of matrix x (NOTE: parameter use="")
   \item[]{\bf cov(x,y)} Co-variation between two vectors of numeric (NOTE: parameter use="")
 \end{itemize}
-The descriptive statistics can be useful to get hands on with data (e.g. detect outliers, find batch effects). Also plotting the 
-correlation between individual samples can give an indication of the quality of the whole data set.
-However R also contains a scala of modeling tools such as: Fitting and Testing models to data
-Functions that model data take a model function description, so lets first look at an example. We create $y$ holding a linear set of 
-response variables, we add a linear effect of 0.5 and la small amount of noise (y1) and do the same again only a smaller effect and 
-a lot more noise. Finally x is going to be our predictor.
+The descriptive statistics can be useful to get hands on with data (e.g. detect outliers, find batch effects). Additionally by 
+plotting the correlation between individual samples one can get an indication of the quality of the whole data set. There are 
+many ways to statistically test for e.g. Normalness of your data, but a quick look by eye will usually be just as informative.
+The R language also contains a scala of modeling tools such as: Fitting and Testing of linear models, prediction, clustering 
+and machine learning. Functions that model data take a model function description, so lets take a look at an example. We create 
+$y$ holding a single response variables. Then we add a linear effect of 0.5 and a small amount of noise (y1) and do the same again 
+for y2 only now using a smaller effect size and a lot more noise. Finally x is going to be our predictor variable.
 <<lmexample,eval=TRUE,echo=TRUE>>=
 y1 <- runif(100)*5+(1:100)*0.5
 y2 <- runif(100)*20+(1:100)*0.01
