@@ -1,2 +1,2 @@
 R CMD Sweave RAssignments.Rnw
-pdflatex RAssignments.tex
+pdflatex  -include-directory=/usr/share/R/share/texmf/tex/latex RAssignments.tex

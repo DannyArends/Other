@@ -352,10 +352,10 @@ Remember these functions, they are the most usefull functions in R.
 The can be used to make sub selections of data for you at minimal effort, so please 
 take a moment to familiarize yourself with these functions.
 \begin{verbatim}
- #Selecting rows using a 'descision' function
+ #Selecting rows using a descision function
  mymatrix <- mymatrix[apply(mymatrix,1,function(x){<fun>}),]
  
- #Selecting columns using a 'descision' function
+ #Selecting columns using a descision function
  mymatrix <- mymatrix[,apply(mymatrix,2,function(x){<fun>})]
  
  #replace <fun> with something like:
