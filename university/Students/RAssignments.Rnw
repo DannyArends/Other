@@ -86,7 +86,7 @@ Programming languages use data types to tell the CPU how many rows lights to use
 Also in R, data (text, labels, measurements, etc) is dived in specialized classes, this to optimize their 
 storage in terms of 0 and 1's that the computer uses internally.
 \begin{itemize}
-  \item[]{\bf null, NULL, NA, NAN, INF} Special cases in mathematics/programming (does not exist, exists but empty, unknown, not a number, infinite)
+  \item[]{\bf null, NULL, NA, NaN, Inf} Special cases in mathematics/programming (does not exist, exists but empty, unknown, not a number, infinite)
   \item[]{\bf boolean} Value to represent a boolean (TRUE / FALSE)
   \item[]{\bf numeric} Numerical value (e.g. $0, 1, 0.25, pi$)
   \item[]{\bf character} String value (e.g. $"Dog", "House", "Bike"$ but also vectors of Strings)
