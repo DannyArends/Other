@@ -190,10 +190,10 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
   {\bf getwd()} to get the current directory. After setting the correct work directory a datafile 
   can be loaded by:
 \begin{verbatim} read.table("dataset1.txt") \end{verbatim} 
-  This will print out the contents of the datafile to the screen if succesfull. NORMALLY this is 
+  This will print out the contents of the datafile to the screen if successful. NORMALLY this is 
   not the case. Additional parameters will have to be provided, so that R can make sense of data 
-  format. Parameters like {\bf header}, {\bf row.names}, {\bf sep}, {\bf fill}. It it wise fo first 
-  open the datafile in a text editor and check if there are any headers, rownames, empty lines, 
+  format. Parameters like {\bf header}, {\bf row.names}, {\bf sep}, {\bf fill}. It it wise to first 
+  open the data file in a text editor and check if there are any headers, row names, empty lines, 
   additional headers, comment lines, NA values. Most problems arise from data formatting and 
   loading into memory.Some other solutions will be provided in other section (databases and 
   standard formats).\\  
@@ -201,7 +201,7 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
   To do this one uses the $<-$ assignment operator. 
 \begin{verbatim} mydataset1 <- read.table("dataset1.txt") \end{verbatim}   
   To view the names of all files in a directory we can use the {\bf dir()} function list them. With 
-  the dir function and the for loop it is possible to load all datsets in a certain directory.
+  the dir function and the for loop it is possible to load all data sets in a certain directory.
 \begin{verbatim} 
   dirdata <- vector(length(dir()), mode="list")
   file_number <- 0;
@@ -214,7 +214,7 @@ We can apply filters to only get files of a certain type (e.g. We can specify we
 text files).
   \\
   \\{\bf Assignments}\\
-  {\bf A1.0} Read the two datasets into the R environment (phenotypes.txt, genotypes.txt)\\
+  {\bf A1.0} Read the two data sets into the R environment (phenotypes.txt, genotypes.txt)\\
   {\bf A1.1} Study the help of read.table (?read.table) and load in only half of the genotypes.txt file
 \subsection{Random data}
   because R is the language for statistics random is a very important thing in R. Perhaps readers 
@@ -250,7 +250,7 @@ text files).
 This adds 100 times $Hello World$ to a log file.
  {\bf Assignments}\\
  {\bf A2.0} Use sample, runif, rnorm to generate a 20x5 matrix with random numbers. Save the matrices to variables with good names and write them to a file (?matrix, ?write.table)\\
- {\bf A2.1} Use cat to print the numbers 1 to 500 in a file in such a way that (check that there is no trailing space behing the last number).
+ {\bf A2.1} Use cat to print the numbers 1 to 500 in a file in such a way that (check that there is no trailing space behind the last number).
  \begin{verbatim}
  1
  2 3
@@ -258,7 +258,7 @@ This adds 100 times $Hello World$ to a log file.
  7 8 9 10
  \end{verbatim}
  {\bf A2.2} Escape and print the sentence to file: \textbackslash I say: " Escaping stuff is great."\textbackslash \\
- {\bf A2.3} Extra: Use the traingle printing from A0.2 to print a Diamond shape into a file\\
+ {\bf A2.3} Extra: Use the triangle printing from A0.2 to print a Diamond shape into a file\\
 \newpage
 \section{Manipulating your data}
   Let us start this section with an example. We create individual names using the {\bf paste} 
@@ -304,7 +304,7 @@ divide(1:10)
   We can add the {\bf invisible()} function around the $res$ variable to prevent the result from being 
   printed to the interface. 
 \begin{verbatim} invisible(result_variable) \end{verbatim}
-  This is extremely usefull when dealing with BIG data sets. Printing of 
+  This is extremely useful when dealing with BIG data sets. Printing of 
   thousands to millions of numbers or text can crash the Rgui.
   \\
   {\bf Assignments}\\
@@ -312,7 +312,7 @@ divide(1:10)
   {\bf A3.1} Create a function to calculate the faculty function (e.g. $5! = 5*4*3*2*1$)\\
   {\bf A3.2} Create a function to calculate the row means of a matrix\\
   {\bf A3.3} Create a function to asses if a number is prime (can only be divided by itself and 1 without any remainder)\\
-  {\bf A3.4} Extra: An LED display has 10 rows and 10 colums. Try to create a function to that takes a parameter specifying numeric which leds should be on
+  {\bf A3.4} Extra: An LED display has 10 rows and 10 columns. Try to create a function to that takes a parameter specifying numeric which LEDs should be on
 \begin{verbatim}
 1       2       3       4       5       6       7       8       9       10      
 11      12      13      14      15      16      17      18      19      20      
@@ -351,15 +351,15 @@ divide(1:10)
 -#--#-####
 \end{verbatim}
 \subsection{if, which, match, apply and \%in\%}
-Remember these functions, they are among the most usefull functions that R provides.
+Remember these functions, they are among the most useful functions that R provides.
 These functions can be used to make subsets of your data at minimal effort. So take 
-a moment to familiarize yourself with these functions by tooking up their help files 
+a moment to familiarize yourself with these functions by looking up their help files 
 and looking / copy-paste'ing some examples.
 \begin{verbatim}
- #Selecting rows using a descision function
+ #Selecting rows using a decision function
  mymatrix <- mymatrix[apply(mymatrix,1,function(x){<fun>}),]
  
- #Selecting columns using a descision function
+ #Selecting columns using a decision function
  mymatrix <- mymatrix[,apply(mymatrix,2,function(x){<fun>})]
  
  #replace <fun> with something like:
@@ -374,8 +374,8 @@ take e.g. column 2 from file one and match that to e.g. column 4 in the other fi
   {\bf A3.5} Study the five functions discussed in this chapter, and try them out\\
 \section{Displaying your data}
   Creating nice images or summary statistics plots of your data is one of the main features of R. 
-  Visual output (plots / images) can be saved by specifing an output file with a {\bf device}. 
-  The device in our case is usualy a image type: like PNG, JPG, GIF, EPS. For bioinformatics 
+  Visual output (plots / images) can be saved by specifying an output file with a {\bf device}. 
+  The device in our case is usually a image type: like PNG, JPG, GIF, EPS. For bio informatics 
   publications usually a combination of latex text files and eps figures are used. But for normal 
   use jpg or png quality suffices. Fortunately there are not a lot of difference between the device 
   routines. To open a device you can simply call its name and add parameters to control things like 
@@ -384,12 +384,12 @@ take e.g. column 2 from file one and match that to e.g. column 4 in the other fi
   Then any plot routine can be called (e.g. plot, image, heatmap, boxplot, etc) also 
   points, arrows and legends can be added to the plot window.
   To finalize the plot and write it to disk one uses the $dev.off()$ routine.
-  Colors can be made transparant using the rgb() function, but R also provides some 
+  Colors can be made transparent using the rgb() function, but R also provides some 
   build in color ranges: rainbow(n, alpha),heat.colors(n, alpha), terrain.colors(n, alpha), 
   topo.colors(n, alpha), cm.colors(n, alpha), gray(n). These functions all have an n 
   which is the number of colors generated (usually ~10 to 100), but also the color 
-  ranges can be made semi transparant setting the alpha lower then 1.
-  To illustrate plotting a colorfull line to a myplot.png file in the example below:
+  ranges can be made semi transparent setting the alpha lower then 1.
+  To illustrate plotting a colorful line to a myplot.png file in the example below:
 \begin{verbatim} 
  png(filename="myplot.png",bg="white")
  image(matrix(rnorm(250),50,50),main="image example",col=rainbow(10))
@@ -419,7 +419,7 @@ image(z, axes = FALSE, main = "Math can be beautiful...",
   TRUE, a better representiation of data is given by scale="none")
   \item[]{\bf hist()} basic statistics (vector and matrix) option to add plots
   \item[]{\bf image()} 2 Dimensional image plotting with the ability to add {\bf points()} and {\bf lines()} and {\bf legend()}
-  \item[]{\bf contour()} 2 Dimensional contour plot with the option to add isoterms
+  \item[]{\bf contour()} 2 Dimensional contour plot with the option to add isotherm
   \item[]{\bf persp()} Perspective plot, like a 3D landscape (with optional colors) 
   \item[]{\bf ?par} Help with all the possible parameters you can supply to  plotting window in R 
 \end{itemize}
@@ -503,8 +503,8 @@ arrows(5, 0, 5, x[5]-0.01, col="red",lwd=2)     #point to the fifth point
 
 \newpage
 \section{Libraries}
-To collaborate on data R provides the 'package'. A package is a stabile/tested version of code developed by other scientists.
-A package can contain new datastructures (e.g. store population), data (datasets can be packed with an R-packages) and functions.
+To collaborate on data R provides the 'package'. A package is a stable/tested version of code developed by other scientists.
+A package can contain new data structures (e.g. store population), data (data sets can be packed with an R-packages) and functions.
 To load a library use:
 \begin{verbatim} library(stats) \end{verbatim}
 Or \begin{verbatim} require(stats) \end{verbatim}
@@ -516,11 +516,11 @@ Also the standard libraries of R contains many nice functions like for example t
  cat("Time:",(e-s)[[3]],"Seconds\n")                      #Time information
  cat("Used:",memory.size(),"/",memory.limit(),"Mb\n")     #Memory information
 \end{verbatim}
-The new functions the add are related to biology/statistics/engineering/ai etc. So there is a long list of packages available
+The new functions the add are related to biology/statistics/engineering/AI etc. So there is a long list of packages available
 (for a full list see http://cran.r-project.org/ link Packages). Some packages that might come in handy:
 \begin{itemize}
   \item[]{\bf snow} Single workstation of Computers - Adds the ability to use multiple cores/computers for certain algorithms
-  \item[]{\bf RCurl} - Adds the ability to read and interact with webpages
+  \item[]{\bf RCurl} - Adds the ability to read and interact with web pages
 \end{itemize}
   {\bf Assignments}\\
   {\bf A5.0} Install the 2 packages into R ( top menu, packages, install packages(s) ) and load them into R, see what functions they offer by ??snow ??RCurl\\
@@ -528,19 +528,19 @@ The new functions the add are related to biology/statistics/engineering/ai etc. 
   R is the statistical language and thus provides a lot of standard functions related to statistics. Most of these functions can be 
   used on vectors and matrices. Some need to be $apply$'ed to a matrix
 \begin{itemize}
-  \item[]{\bf sd()} Standard deviation of a vector of numerics
-  \item[]{\bf mean()} Mean value of a vector of numerics
-  \item[]{\bf median()} Median value of a vector of numerics
+  \item[]{\bf sd()} Standard deviation of a vector of numeric
+  \item[]{\bf mean()} Mean value of a vector of numeric
+  \item[]{\bf median()} Median value of a vector of numeric
   \item[]{\bf cor(x)} Correlation matrix of matrix x (NOTE: parameter use="")
-  \item[]{\bf cor(x,y)} Correlation between two vectors of numerics (NOTE: parameter use="")
-  \item[]{\bf cov(x)} Covariation matrix of matrix x (NOTE: parameter use="")
-  \item[]{\bf cov(x,y)} Covariation between two vectors of numerics (NOTE: parameter use="")
+  \item[]{\bf cor(x,y)} Correlation between two vectors of numeric (NOTE: parameter use="")
+  \item[]{\bf cov(x)} Co-variation matrix of matrix x (NOTE: parameter use="")
+  \item[]{\bf cov(x,y)} Co-variation between two vectors of numeric (NOTE: parameter use="")
 \end{itemize}
-The descriptive statistics can be usefull to get hands on with data (e.g. detect outliers, find batch effects). Also plotting the 
-correlation between individual samples can give an indication of the quality of the whole dataset.
-However R also contains a scala of modelling tools like: Fitting and Testing models to data
-Functions that model data take a model function description, so lets first look at an example. We create $y$ holding a lineair set of 
-response variables, we add a lineair effect of 0.5 and la small amount of noise (y1) and do the same again only a smaller effect and 
+The descriptive statistics can be useful to get hands on with data (e.g. detect outliers, find batch effects). Also plotting the 
+correlation between individual samples can give an indication of the quality of the whole data set.
+However R also contains a scala of modeling tools like: Fitting and Testing models to data
+Functions that model data take a model function description, so lets first look at an example. We create $y$ holding a linear set of 
+response variables, we add a linear effect of 0.5 and la small amount of noise (y1) and do the same again only a smaller effect and 
 a lot more noise. Finally x is going to be our predictor.
 <<lmexample,eval=TRUE,echo=TRUE>>=
 y1 <- runif(100)*5+(1:100)*0.5
@@ -569,12 +569,12 @@ lines(lm(y2~x)[[1]][1]+lm(y2~x)[[1]][2]*1:100,col="red",lwd=2)
 @
 }
 \end{figure}
-When we now want to asses the fit of our simple lineair 'model' we can simply calculate the 
+When we now want to asses the fit of our simple linear 'model' we can simply calculate the 
 deviation between the estimated and observed values for both models. But R also has a build 
 in function to do this hypothesis testing for you.
 \begin{itemize}
-  \item[]{\bf lm} lineair models
-  \item[]{\bf glm} Generalized lineair models
+  \item[]{\bf lm} linear models
+  \item[]{\bf glm} Generalized linear models
   \item[]{\bf t.test} Basic (one or two sided) Students T-test
   \item[]{\bf anova} Analysis of variance
   \item[]{\bf chisq.test} Chi square test for goodness for fit
