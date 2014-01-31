@@ -24,8 +24,10 @@ set.seed(19696527)
 \title{Introduction into and assignments for R}
 \author{
 Danny Arends\,$^{1,*}$,
+Konrad Zych\,$^{1,2}$,
 Ritsert C. Jansen\,$^1$\\
 $^{1}$Groningen Bioinformatics Centre, University of Groningen, NL.
+$^{2}$Faculty of Biochemistry, Biophysics and Biotechnology, Jagiellonian University in Kraków, PL.\\
 }
 
 \maketitle
@@ -87,17 +89,19 @@ storage in terms of 0 and 1's that the computer uses internally.
   \item[]{\bf list} A list of other types, and items from a list can be looked up using [[i]] (e.g. with $mylist[[5]]$ we get the 5th element)
   \item[]{\bf data.frame} Data.frame object is a matrix in which multiple complex types can be used together
 \end{itemize}
-Don't let all those types scare you, R will try and manage types for you, but sometimes it 
-goes wrong. We can use the numeric class to denote a sequence of numbers but we can also create 
-a sequence by using the seq function.\\
+Do not let all those different data types scare you, R will try and manage types for you. This means that most 
+of the time you do not even have to worry which type an object is. However sometimes R gets it wrong, or we 
+want to be more efficient at storing a certain data. But let us first create some simple numeric data. We can 
+use start{\bf : }end to denote a sequence of numbers, or create a sequence by using the seq function.\\
 <<data1,eval=TRUE,echo=TRUE>>=
 1:10 #One to a hundred
 seq(1,50,4) #One to a five hundred stepping 4
 @
-Then to create something of a string class we can concatenate it together with a String value (in quotes "). 
-The result will be a concatenated string we create e.g. names for our objects/individuals. To do this we 
-have two functions {\bf cat} and {\bf paste}. When we supply a sequence of values/strings cat creates one 
-big string while paste will create a vector of strings. An example:
+To create an object of a string class, we can concatenate it together with a String value. String values are 
+surrounded by quotes ", also when R print them to the screen. If we concatenate a number and a string, the result 
+will be a single string with the string concatenated to the numeric value. This can be used to create e.g. names 
+for our objects/individuals. For this we have two functions {\bf cat} and {\bf paste}. When we supply a sequence 
+of values/strings {\bf cat} creates one big string while {\bf paste} will create a vector of strings. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 cat("ind",1:10,sep=",")
 paste("ind",1:10,sep="")
@@ -158,10 +162,36 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
 \begin{verbatim} 
   cat("\"\\\\\"\\\"",file="log.txt",append = TRUE) # :-(
 \end{verbatim}
+
 {\bf Assignments}\\
-  {\bf A0.0} How do we check if something is between 0 and 10, (and error otherwise)\\
-  {\bf A0.1} Use a for and a while loop from 1 to 1000 and add up all the numbers in a new variable
-  {\bf A0.2} Use cat and paste to print out a triangle of \#
+  {\bf A0.0} Create a new directory dedicated to hold all the code produced to answer these questions\\
+  {\bf A0.1} In the new directory create a file called assignments.R, and open it in your text editor\\
+  {\bf A0.2} Use comments \# to add your Name and Student number on top, also add: date-created, last-modified and a 'contains directive'
+  \begin{verbatim}
+  ###
+  # \file assignments.R
+  #
+  # Copyright (c) 2010, Danny Arends, p256802
+  # last modified Jan, 2014
+  # first written May, 2013
+  # 
+  # A copy of the GNU General Public License, version 3, is available
+  # at http://www.r-project.org/Licenses/GPL-3
+  # 
+  # Contains R functions: myFunction
+  ###
+  \end{verbatim}
+  Add every piece of code we'll produce, to this file. Remember to send in the file(s) after you answered all questions 
+  and hand it in with the final report. If at any point you get stuck or don't know how a function works check the help.\\
+  {\bf A0.3} Remember that experiments need to be repeatable? Well the same applies to computerized data analysis. This means first and foremost that code
+  should be runnable. Make the code runnable by adding a statement to move into the directory you created:
+  \begin{verbatim}
+  #Start of code:
+  setwd("d:/practical/mydir")
+  \end{verbatim}
+  {\bf A0.4} How do we check if something is between 0 and 10, (and error otherwise)\\
+  {\bf A0.5} Use a for and a while loop from 1 to 1000 and add up all the numbers in a new variable
+  {\bf A0.6} Use cat and paste to print out a triangle of \#
 \begin{verbatim}
 1 #
 2 ##
@@ -173,8 +203,6 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
 
 \newpage
 \section{R and data}
-\subsection{static data and sequences}
-  TODO
 \subsection{Loading data sets}
   Loading data sets is done with the functions read.table and read.csv. They are both similar in
   the options they provide for loading data. but load.csv is generally faster by a factor of two to 
