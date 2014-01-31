@@ -348,9 +348,10 @@ divide(1:10)
 -#--#-####
 \end{verbatim}
 \subsection{if, which, match, apply and \%in\%}
-Remember these functions, they are the most usefull functions in R.
-The can be used to make sub selections of data for you at minimal effort, so please 
-take a moment to familiarize yourself with these functions.
+Remember these functions, they are among the most usefull functions that R provides.
+These functions can be used to make subsets of your data at minimal effort. So take 
+a moment to familiarize yourself with these functions by tooking up their help files 
+and looking / copy-paste'ing some examples.
 \begin{verbatim}
  #Selecting rows using a descision function
  mymatrix <- mymatrix[apply(mymatrix,1,function(x){<fun>}),]
@@ -362,18 +363,20 @@ take a moment to familiarize yourself with these functions.
  mean(x) > 5  #Select rows/cols with mean larger then 5
  sd(x) > 3    #Select row/cols with sd larger then 5
 \end{verbatim}
-Also the \%in\% function which can do matching/sorting based on reference vectors (imagine 2 files where 
-the labels are mixed). TODO
+Additionally R provides the \%in\% function, this function can match/sort based on a 
+reference vector (imagine 2 files where the labels are mixed). Using \%in\% we can 
+take e.g. column 2 from file one and match that to e.g. column 4 in the other file.
   \\
   {\bf Assignments continued}\\
-  {\bf A3.5} Study the 5 functions, and try them out\\
+  {\bf A3.5} Study the five functions discussed in this chapter, and try them out\\
 \section{Displaying your data}
-  plotting images or statistics of your data is one of the main features of R. Plots 
-  can be saved by specifing an output file with a {\bf device}. The device is in our 
-  case usualy a image type: like PNG, JPG, GIF, EPS. For bioinformatics publications 
-  usually a combination of latex and eps figures are used. But for normal use jpg or 
-  png suffices. Fortunately for us there is not a lot of difference between the device 
-  routines. To open a device:
+  Creating nice images or summary statistics plots of your data is one of the main features of R. 
+  Visual output (plots / images) can be saved by specifing an output file with a {\bf device}. 
+  The device in our case is usualy a image type: like PNG, JPG, GIF, EPS. For bioinformatics 
+  publications usually a combination of latex text files and eps figures are used. But for normal 
+  use jpg or png quality suffices. Fortunately there are not a lot of difference between the device 
+  routines. To open a device you can simply call its name and add parameters to control things like 
+  height, width and number of pixels:
 \begin{verbatim} png(filename="myplot.png",bg="white")  \end{verbatim}
   Then any plot routine can be called (e.g. plot, image, heatmap, boxplot, etc) also 
   points, arrows and legends can be added to the plot window.
