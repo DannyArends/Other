@@ -90,7 +90,7 @@ storage in terms of 0 and 1's that the computer uses internally.
   \item[]{\bf boolean} Value to represent a boolean (TRUE / FALSE)
   \item[]{\bf numeric} Numerical value (e.g. $0, 1, 0.25, pi$)
   \item[]{\bf character} String value (e.g. $"Dog", "House", "Bike"$ but also vectors of Strings)
-  \item[]{\bf factor} A factorial (also called a enum or category variable holds variables that group objects (e.g. Plot1, Plot2, Plot3)
+  \item[]{\bf factor} A factorial (also called a enum or category variable holds variables that group objects (e.g. Plot1, Plot2, Plot3))
   \item[]{\bf vector} A list of one of the above classes, and items from a vector can be looked up using [i] (e.g. with $myvector[5]$ we get the 5th element)
   \item[]{\bf matrix} A matrix of one of the above classes and items from a matrix can be looked up using [r,c] (e.g. with $mymatrix[5,3]$ we get the element at the 5th row, 3rd column)
   \item[]{\bf list} A list of other types, and items from a list can be looked up using [[i]] (e.g. with $mylist[[5]]$ we get the 5th element)
@@ -102,7 +102,7 @@ want to be more efficient at storing a certain data. But let us first create som
 use start{\bf : }end to denote a sequence of numbers, or create a sequence by using the seq function.\\
 <<data1,eval=TRUE,echo=TRUE>>=
 1:10 #One to a hundred
-seq(1,50,4) #One to a five hundred stepping 4
+seq(1,50,4) #One to a fifty stepping 4
 @
 To create an object of a string class, we can concatenate it together with a String value. String values are 
 surrounded by quotes ", also when R print them to the screen. If we concatenate a number and a string, the result 
