@@ -148,8 +148,8 @@ The syntax of R is quite similar to a lot of known programming languages. A smal
 Control structures shape the flow of data through a program. Based on decision points we can take different paths based on a statement 
 being TRUE or FALSE. Programming creates small logical chunks (control statements and functions) to do things and then adds these chunks 
 together inside a program to perform a certain task. A simple example could be a regulator for a heater, IF the temperature in the room is 
-too low, the heater should be ON. IF the temperature is too high the cooler needs to be ON and the heater OFF. Basic descisions like this 
-can be used to build complex behaviours. This control flow plus the ability to storeresults in variables allow us to manipulate data, store 
+too low, the heater should be ON. IF the temperature is too high the cooler needs to be ON and the heater OFF. Basic decisions like this 
+can be used to build complex behaviours. This control flow plus the ability to store results in variables allow us to manipulate data, store 
 intermediate results and based on these intermediate results or user input perform a new task. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 numbers <- seq(1,50,4)
