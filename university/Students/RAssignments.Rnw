@@ -137,12 +137,15 @@ The syntax of R is quite similar to a lot of known programming languages. A smal
   \item[]{\bf which, \%in\%, match, pmatch, grep } Matching and lookup functions
   \item[]{\bf c(), cbind(), rbind()} Creating new structures by merging them together
 \end{itemize}
-Control structures shape the flow in a program. Based on decision points we can take 
-different paths inside a program. Also they allow us to manipulate data and store 
-intermediate results into {\bf variables}. An example:
+Control structures shape the flow of data through a program. Based on decision points we can take different paths based on a statement 
+being TRUE or FALSE. Programming creates small logical chunks (control statements and functions) to do things and then adds these chunks 
+together inside a program to perform a certain task. A simple example could be a regulator for a heater, IF the temperature in the room is 
+too low, the heater should be ON. IF the temperature is too high the cooler needs to be ON and the heater OFF. Basic descisions like this 
+can be used to build complex behaviours. This control flow plus the ability to storeresults in variables allow us to manipulate data, store 
+intermediate results and based on these intermediate results or user input perform a new task. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 numbers <- seq(1,50,4)
-sort(numbers,decreasing = TRUE)
+snumbers <- sort(numbers,decreasing = TRUE)
 @
 this code assign the number 1,5,9..49 to the variable numbers and sorts them in a decreasing order.
 \begin{verbatim}
@@ -150,11 +153,11 @@ this code assign the number 1,5,9..49 to the variable numbers and sorts them in 
   cat("Hello world\n") # \n : End the line
  } 
 \end{verbatim}
-  This will print 100 times Hello World in a file, notice the \textbackslash n \textbackslash t 
-  those are special characters. \textbackslash n means begin a new line, \textbackslash t denotes 
-  a tab indentation. While we're at it: A bit of escaping. Lets say I want to print a ". However " 
-  normally is used to specify a string in R. But what if that string contains a ", well we can 
-  simply escape it with a \textbackslash. So an example to print: "\textbackslash into a file we do:
+This will print 100 times Hello World in a file, notice the \textbackslash n \textbackslash t 
+those are special characters. \textbackslash n means begin a new line, \textbackslash t denotes 
+a tab indentation. While we're at it: A bit of escaping. Lets say I want to print a ". However " 
+normally is used to specify a string in R. But what if that string contains a ", well we can 
+simply escape it with a \textbackslash. So an example to print: "\textbackslash into a file we do:
 \begin{verbatim} 
   cat("\"\\",file="log.txt",append = TRUE) # :-)
 \end{verbatim}
@@ -163,7 +166,17 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
   cat("\"\\\\\"\\\"",file="log.txt",append = TRUE) # :-(
 \end{verbatim}
 
-{\bf Assignments}\\
+\subsection{Best practices while coding}
+Coding is like any research, one needs to be diligent and precise. This means structuring code in such a way that 
+the logical flow of a program is visible at first glance. Also this implies well documented code, and adding comments 
+when things might be unclear to others.
+
+Furthermore it is common practice to exercise a kind of ownership. So people know who wrote the code and e.g. who is 
+currently maintaining it. This might seem like a waste of time now, and it is. But when working with more 
+people on larger projects it is impossible to keep track of everything, and thus documentation becomes vital.
+\\\\
+{\bf Assignments}
+\\
   {\bf A0.0} Create a new directory dedicated to hold all the code produced to answer these questions\\
   {\bf A0.1} In the new directory create a file called assignments.R, and open it in your text editor\\
   {\bf A0.2} Use comments \# to add your Name and Student number on top, also add: date-created, last-modified and a 'contains directive'
@@ -251,8 +264,9 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
 \end{verbatim}
 We can apply filters to only get files of a certain type (e.g. We can specify we want to loop over 
 text files).
-  \\
-  \\{\bf Assignments}\\
+\\\\
+{\bf Assignments}
+\\
   {\bf A1.0} Read the two data sets into the R environment (phenotypes.txt, genotypes.txt)\\
   {\bf A1.1} Study the help of read.table (?read.table) and load in only half of the genotypes.txt file
 \subsection{Random data}
@@ -287,7 +301,9 @@ text files).
  }
 \end{verbatim}
 This adds 100 times $Hello World$ to a log file.
- {\bf Assignments}\\
+\\\\
+{\bf Assignments}
+\\
  {\bf A2.0} Use sample, runif, rnorm to generate a 20x5 matrix with random numbers. Save the matrices to variables with good names and write them to a file (?matrix, ?write.table)\\
  {\bf A2.1} Use cat to print the numbers 1 to 500 in a file in such a way that (check that there is no trailing space behind the last number).
  \begin{verbatim}
@@ -340,13 +356,15 @@ divide <- function(number){
 divide(100.3)
 divide(1:10)
 @ 
-  We can add the {\bf invisible()} function around the $res$ variable to prevent the result from being 
-  printed to the interface. 
+We can add the {\bf invisible()} function around the $res$ variable to prevent the result from being 
+printed to the interface. 
 \begin{verbatim} invisible(result_variable) \end{verbatim}
-  This is extremely useful when dealing with BIG data sets. Printing of 
-  thousands to millions of numbers or text can crash the Rgui.
-  \\
-  {\bf Assignments}\\
+This is extremely useful when dealing with BIG data sets. Printing of thousands to millions of numbers or 
+text can crash the Rgui, and this way we can protect any people using our code from forgetting to store 
+the output in a variable.
+\\\\
+{\bf Assignments}
+\\
   {\bf A3.0} Create a function to calculate the hypotenuse of a right angled triangle\\
   {\bf A3.1} Create a function to calculate the faculty function (e.g. $5! = 5*4*3*2*1$)\\
   {\bf A3.2} Create a function to calculate the row means of a matrix\\
