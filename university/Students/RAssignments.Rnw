@@ -36,20 +36,20 @@ Version: 0.0.1
 For Windows, Mac, Unix or Linux download and install the two following programs:
 \begin{itemize}
 \item Download {\bf Rgui} from http://cran.xl-mirror.nl \\
-The R programming language and several usefull libraries. More libraries are available online, and can be installed 
+The R programming language and several useful libraries. More libraries are available online, and can be installed 
 using the graphic user interface of R or the command line. For more help on the R a
 \item Download {\bf Notepad++} from http://notepad-plus-plus.org/download \\
-Notepad++ is a text editor for editing text-documents and opening larger datasets it is open-source and has many 
+Notepad++ is a text editor for editing text-documents and opening larger data sets it is open-source and has many 
 additional features, like syntax highlighting for several programming languages. Other IDE's can of course be used 
 as well.
 \end{itemize}
-Programming is more or less learned by doing, and trying and failing and frustration which are compensated by the eurika moments.
+Programming is more or less learned by doing, and trying and failing and frustration which are compensated by the eureka moments.
 Anyone able to take a problem and subdivide it into small step (like boil water) can learn how to program.
 Also good resources are available online. So just search. This document was created with R, so a big THANK YOU to the guys 
 from the R Develop, Latex, .Eps and Sweave teams.
 \\
 \\
-Also: Use version controll software - Nothing saved my ass as many a times. 
+Also: Use version control software - Nothing saved my ass as many a times. 
 \\
 \\
 Danny Arends,\\
@@ -62,22 +62,22 @@ i'll try to throw in as much examples and exercises as possible.
 \subsection{Getting help}
 Getting help in R is easy, if you are looking for a certain term/function do:
 \begin{verbatim} ??searchterm \end{verbatim}
-A window will pop-up with all the function of R that have the searchterm in the function name or in the description, once you 
+A window will pop-up with all the function of R that have the search term in the function name or in the description, once you 
 found the function you want to use (or think you need) do:
 \begin{verbatim} ?functionname \end{verbatim}
 This opens up a HTML page with a description of the function, BUT more importantly usually also an {\bf example}. 
-Also references to other related functions and datasets and the guy you can email in case you think you found a bug.
+Also references to other related functions and data sets and the guy you can email in case you think you found a bug.
 \subsection{Types of data}
 R programs are composed of data and logic. Logic is provided in a file with commands or control structures 
-and is made by the programmer. (Thats you). Data for a computer however exists only as 0s and 1s. For us data is 
+and is made by the programmer. (That is you). Data for a computer however exists only as 0s and 1s. For us data is 
 provided by means of a file/additional hard drive or a direct download from another computer.
 So to fit a number like 100 into 32bits is best visualized by 32 light in a row some on some off. Programming 
-lanuages use datatypes to tell the cpu how many rows lights to use for a certain datatype.
+languages use data types to tell the CPU how many rows lights to use for a certain data type.
 Also in R, data (text, labels, measurements, etc) is dived in specialized classes, this to optimize their 
 storage in terms of 0 and 1's that the computer uses internally.
 \begin{itemize}
   \item[]{\bf null, NULL, NA, NAN, INF} Special cases in mathematics/programming (does not exist, exists but empty, unknown, not a number, infinite)
-  \item[]{\bf boolean} Value to respresent a boolean (TRUE / FALSE)
+  \item[]{\bf boolean} Value to represent a boolean (TRUE / FALSE)
   \item[]{\bf numeric} Numerical value (e.g. $0, 1, 0.25, pi$)
   \item[]{\bf character} String value (e.g. $"Dog", "House", "Bike"$ but also vectors of Strings)
   \item[]{\bf factor} A factorial (also called a enum or category variable holds variables that group objects (e.g. Plot1, Plot2, Plot3)
@@ -87,7 +87,7 @@ storage in terms of 0 and 1's that the computer uses internally.
   \item[]{\bf data.frame} Data.frame object is a matrix in which multiple complex types can be used together
 \end{itemize}
 Don't let all those types scare you, R will try and manage types for you, but sometimes it 
-goes wrong. We can use the numeric class to denot a sequence of numbers but we can also create 
+goes wrong. We can use the numeric class to denote a sequence of numbers but we can also create 
 a sequence by using the seq function.\\
 <<data1,eval=TRUE,echo=TRUE>>=
 1:10 #One to a hundred
@@ -101,7 +101,7 @@ big string while paste will create a vector of strings. An example:
 cat("ind",1:10,sep=",")
 paste("ind",1:10,sep="")
 @
-And because any programming language is basically a big abbacus we can always do some basic math and logic testing.
+And because any programming language is basically a big abacus we can always do some basic math and logic testing.
 <<bmath,eval=TRUE,echo=TRUE>>=
 sqrt((1+5)/4)
 12/2 == 6
@@ -109,10 +109,10 @@ sqrt((1+5)/4)
 matrix(0,3,5)
 @
 \subsection{Controlling a program}
-Controlling a program is done by executing an algorithm, best to be thought of as a cook receipt. The computer dilligently follows 
+Controlling a program is done by executing an algorithm, best to be thought of as a cook receipt. The computer diligently follows 
 the steps and with each command manipulates the input data. These commands are written in the syntax of the programming language.
 Syntax differs from language to language, but algorithms should in theory not (but also do). Often algorithms are designed based on Design 
-Patterns (Common down to earth logic stuff we see in real life e.g. the procedureral steps to pay at a cash register (unload stuff,calculate 
+Patterns (Common down to earth logic stuff we see in real life e.g. the procedural steps to pay at a cash register (unload stuff,calculate 
 price, give money, get change) is in computer science known as the 'Transaction Design Pattern').
 The syntax of R is quite similar to a lot of known programming languages. A small overview:
 \begin{itemize}
@@ -132,7 +132,7 @@ The syntax of R is quite similar to a lot of known programming languages. A smal
   \item[]{\bf which, \%in\%, match, pmatch, grep } Matching and lookup functions
   \item[]{\bf c(), cbind(), rbind()} Creating new structures by merging them together
 \end{itemize}
-Control structures shape the flow in a program. Based on descision points we can take 
+Control structures shape the flow in a program. Based on decision points we can take 
 different paths inside a program. Also they allow us to manipulate data and store 
 intermediate results into {\bf variables}. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
@@ -158,9 +158,9 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
   cat("\"\\\\\"\\\"",file="log.txt",append = TRUE) # :-(
 \end{verbatim}
 {\bf Assignments}\\
-  {\bf A0.0} How do we check if somthing is between 0 and 10, (and error otherwise)\\
+  {\bf A0.0} How do we check if something is between 0 and 10, (and error otherwise)\\
   {\bf A0.1} Use a for and a while loop from 1 to 1000 and add up all the numbers in a new variable
-  {\bf A0.2} Use cat and paste to print out a traingle of \#
+  {\bf A0.2} Use cat and paste to print out a triangle of \#
 \begin{verbatim}
 1 #
 2 ##
@@ -174,8 +174,11 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
 \section{R and data}
 \subsection{static data and sequences}
   TODO
-\subsection{Loading datasets}
-  Loading datasets is done with the function 
+\subsection{Loading data sets}
+  Loading data sets is done with the functions read.table and read.csv. They are both similar in
+  the options they provide for loading data. but load.csv is generally faster by a factor of two to 
+  four in loading large data sets. An example to load filename.txt into R:
+
 \begin{verbatim} read.table("filename.txt") \end{verbatim}
   this can either be a {\bf full} path to the file (e.g. "c:\textbackslash users\textbackslash 
   danny\textbackslash files\textbackslash data\textbackslash dataset1.txt") or the {\bf relative} 
