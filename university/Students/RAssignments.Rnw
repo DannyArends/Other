@@ -433,9 +433,10 @@ plot(rnorm(1000)+5,main="plot function",type="l",col="red")
 @
 }
 \end{figure}
-  Some examples of plot routines in R. We see the plot function and the boxplot function, 
-  which can plot vectors as well as matrices. The histogram function that can be used to 
-  visually compare several distributions.
+  Here we show some examples of plot routines in R. We see the {\bf plot} function and the {\bf boxplot} function.
+  Both functions are designed so that they allow plotting of many different objects, and as such these functions 
+  can plot vectors as well as matrices. The {\bf histogram} function can be used to visually compare distributions 
+  against each other by adding them on top of each other, this can be done by setting the add parameter to TRUE.
 \begin{figure}[ht]
 \subfigure[boxplot function]{
 <<fig=TRUE,echo=FALSE>>=
