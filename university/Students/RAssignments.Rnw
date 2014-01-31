@@ -131,7 +131,7 @@ The syntax of R is quite similar to a lot of known programming languages. A smal
   \item[]{\bf <-, =} Assigning results to a variable
   \item[]{\bf if(5 < 7)} Test to evaluate if a certain condition is TRUE or FALSE
   \item[]{\bf for(x in 1:70)} Loop through the sequence specified in the for condition giving x the value of 1 to 70
-  \item[]{\bf apply(data,1 or 2,fun)} Apply the function 'fun' to the (1 = rows or 2 = columns) of the data
+  \item[]{\bf apply(data,1 or 2,fun)} Apply the function 'fun' to the (1 = rows, 2 = columns, c(1,2) = both) of the data
 \begin{verbatim} 
  data <- matrix(runif(50),10,5)
  apply(data,1,mean) #Mean values per row
