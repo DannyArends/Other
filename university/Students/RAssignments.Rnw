@@ -79,8 +79,10 @@ Also references to other related functions and data sets and the guy you can ema
 R programs are composed of data and logic. Logic is provided in a file with commands or control structures 
 and is made by the programmer. (That is you). Data for a computer however exists only as 0s and 1s. For us data is 
 provided by means of a file/additional hard drive or a direct download from another computer.
-So to fit a number like 100 into 32bits is best visualized by 32 light in a row some on some off. Programming 
-languages use data types to tell the CPU how many rows lights to use for a certain data type.
+So how does a computer fit a number like 100 into 32bits. This is best visualized by 32 light in a row, each light 
+has a value when ON and no value when OFF, the pattern created by these 32 lights then allows us to store $2^{32}$ states or numbers.
+
+Programming languages use data types to tell the CPU how many rows lights to use for a certain data type.
 Also in R, data (text, labels, measurements, etc) is dived in specialized classes, this to optimize their 
 storage in terms of 0 and 1's that the computer uses internally.
 \begin{itemize}
