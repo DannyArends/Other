@@ -172,9 +172,9 @@ the text higher or lower accordingly.
   cat("Hello world\n") # \n : End the line
  } 
 \end{verbatim}
-This will print 100 times Hello World in a file, notice the \textbackslash n \textbackslash t 
+This will print 100 times Hello World in a file. Notice the \textbackslash n \textbackslash t -
 those are special characters. \textbackslash n means begin a new line, \textbackslash t denotes 
-a tab indentation. While we're at it: A bit of escaping. Lets say I want to print a ". However " 
+a tabulator indentation. While we are at it: A bit of escaping. Lets say I want to print a ". However " 
 normally is used to specify a string in R. But what if that string contains a ", well we can 
 simply escape it with a \textbackslash. So an example to print: "\textbackslash into a file we do:
 \begin{verbatim} 
