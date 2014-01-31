@@ -1,13 +1,14 @@
 \documentclass[11pt,a4paper,leqno]{article}
 \usepackage{amsmath}
 \usepackage{graphicx}
-\usepackage{verbatim}   % useful for program listings
-\usepackage{color}      % use if color is used in text
-\usepackage{subfigure}  % use for side-by-side figures
+\usepackage{verbatim}         % Useful for program listings
+\usepackage{color}            % Use if color is used in text
+\usepackage{subfigure}        % Use for side-by-side figures
 \usepackage{float}
 \usepackage{Sweave}
 \usepackage{fullpage}
 \usepackage{url}
+\usepackage{hyperref}         % Should be removed for printing, however is now handy for links
 \usepackage{fancyhdr}
 \usepackage[dutch]{babel}
 \pagestyle{fancy}
@@ -190,15 +191,25 @@ and to print "\textbackslash \textbackslash " \textbackslash " :
   {\bf getwd()} to get the current directory. After setting the correct work directory a datafile 
   can be loaded by:
 \begin{verbatim} read.table("dataset1.txt") \end{verbatim} 
-  This will print out the contents of the datafile to the screen if successful. NORMALLY this is 
-  not the case. Additional parameters will have to be provided, so that R can make sense of data 
-  format. Parameters like {\bf header}, {\bf row.names}, {\bf sep}, {\bf fill}. It it wise to first 
-  open the data file in a text editor and check if there are any headers, row names, empty lines, 
-  additional headers, comment lines, NA values. Most problems arise from data formatting and 
-  loading into memory.Some other solutions will be provided in other section (databases and 
-  standard formats).\\  
-  To store it also into a {\bf variable} we need to assign the output of the read.table function. 
-  To do this one uses the $<-$ assignment operator. 
+  This will print out all the content of the datafile to the screen if successful. Normally you do 
+  not want to have 15 gigabyte of data rolling before your eyes (takes around 2 minutes on a slow PC). 
+  Even worse, in many cases you will just be presented with an error such as: 'Line XX does not contain 
+  XX elements'. Errors mean that additional parameters will have to be provided, so that R can make 
+  sense of data format. 
+
+  Parameters that can be used for this purpose are: {\bf header} - does the data contain column names, 
+  {\bf row.names} - same for row names, {\bf sep} - how does R need to split data, {\bf fill} - Should 
+  lines that are to short be padded. 
+
+  It it a good idea to first open the data file in a text editor and check if there are any headers, 
+  row names, empty lines, additional headers, comment lines, NA values. Most problems arise from data 
+  formatting issues and people being unable to load their data into R. Some other solutions will be 
+  provided in other section (databases and standard formats), but these only partially solve the data 
+  format issues.
+
+  To store the resulting data from the read.table function we need a {\bf variable}. A variable is like 
+  a box whre you can store values in. To assign the output of the read.table function, we can use the 
+  <- assignment operator.
 \begin{verbatim} mydataset1 <- read.table("dataset1.txt") \end{verbatim}   
   To view the names of all files in a directory we can use the {\bf dir()} function list them. With 
   the dir function and the for loop it is possible to load all data sets in a certain directory.
