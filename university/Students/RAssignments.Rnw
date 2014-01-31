@@ -103,7 +103,7 @@ want to be more efficient at storing a certain data. But let us first create som
 use start{\bf : }end to denote a sequence of numbers, or create a sequence by using the seq function.\\
 <<data1,eval=TRUE,echo=TRUE>>=
 1:10 #One to a hundred
-seq(1,50,4) #One to a fifty stepping 4
+seq(1,50,4) #One to fifty stepping 4
 @
 To create an object of a string class, we can join it together with a String value. String values are 
 surrounded by quotes ", also when R print them to the screen. In programming, joining strings is called concatenation. 
