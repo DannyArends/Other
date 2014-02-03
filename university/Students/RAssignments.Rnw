@@ -149,14 +149,14 @@ Control structures shape the flow of data through a program. Based on decision p
 being TRUE or FALSE. Programming creates small logical chunks (control statements and functions) to do things and then adds these chunks 
 together inside a program to perform a certain task. A simple example could be a regulator for a heater, IF the temperature in the room is 
 too low, the heater should be ON. IF the temperature is too high the cooler needs to be ON and the heater OFF. Basic decisions like this 
-can be used to build complex behaviours. This control flow plus the ability to store results in variables allow us to manipulate data, store 
+can be used to build complex behaviors. This control flow plus the ability to store results in variables allow us to manipulate data, store 
 intermediate results and based on these intermediate results or user input perform a new task. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 numbers <- seq(1,50,4)
 sort(numbers,decreasing = TRUE)
 @
 this code assign the number 1,5,9..49 to the variable numbers and sorts them in a decreasing order.
-An example of using an IF statement can look soething like this:
+An example of using an IF statement can look something like this:
 \begin{verbatim}
   result <- runif(1)*10 #Random number between 0 and 10
   if(result < 5){
@@ -236,9 +236,9 @@ people on larger projects it is impossible to keep track of everything unless th
 \newpage
 \section{R and data}
 \subsection{Loading data sets}
-  Loading data sets is done with the functions read.table and read.csv. They are both similar in
-  the options they provide for loading data. But load.csv is generally faster by a factor of two to 
-  four in loading large data sets. An example to load filename.txt into R:
+  Loading data sets is done with the {\bf read.table} and {\bf read.csv} functions. They are both similar in
+  the options they provide for loading data. But load.csv is generally faster by a factor of two to four in 
+  loading large data sets. An example to load filename.txt into the R environment:
 
 \begin{verbatim} read.table("filename.txt") \end{verbatim}
   this can either be a {\bf full} path to the file (e.g. "c:\textbackslash users\textbackslash 
@@ -247,28 +247,32 @@ people on larger projects it is impossible to keep track of everything unless th
   in the local working directory. To circumvent typing the full path of a file first set the 
   working dir using: 
 \begin{verbatim} setwd("c:/users/danny/files/data") #Note the \ is turned into a / \end{verbatim} 
-  To change the working directory. Most functions have their counterpart and {\bf setwd()} has 
-  {\bf getwd()} to get the current directory. After setting the correct work directory a datafile 
-  can be loaded by:
+  This will change the current working directory. many functions have their counterpart and 
+  {\bf setwd()} has {\bf getwd()} to get the current directory. 
+
+  After setting the correct work directory you can load a datafile into R by typing:
 \begin{verbatim} read.table("dataset1.txt") \end{verbatim} 
-  This will print out all the content of the datafile to the screen if successful. Normally you do 
-  not want to have 15 gigabyte of data rolling before your eyes (takes around 2 minutes on a slow PC). 
-  Even worse, in many cases you will just be presented with an error such as: 'Line XX does not contain 
-  XX elements'. Errors mean that additional parameters will have to be provided, so that R can make 
-  sense of data format. 
+  This will print out all the content of the data file on to the screen, and stop when it encounters an 
+  error. Normally you do not want to have 15 gigabyte of data rolling before your eyes (takes around 
+  two to four minutes on a slow PC). Even worse, in many cases you will just be presented with an error 
+  such as: 'Line XX does not contain XX elements'. Errors in this case mean data is not formatted 
+  correctly, which can normally be solved by informing R about the format of your data. To do this the 
+  {\bf read.table} and {\bf read.csv} functions provide additional parameters so that R can make sense 
+  of data format. Take some time to read through the parameter descriptions in the help files from 
+  these two functions, because you will be using them a LOT.
 
   Parameters that can be used for this purpose are: {\bf header} - does the data contain column names, 
   {\bf row.names} - same for row names, {\bf sep} - how does R need to split data, {\bf fill} - should 
   lines that are to short be padded. 
 
-  It it a good idea to first open the data file in a text editor and check if there are any headers, 
+  It it a normally a good idea to first open the data file in a text editor and check if there are any headers, 
   row names, empty lines, additional headers, comment lines, NA values. Most problems arise from data 
   formatting issues and people being unable to load their data into R. Some other solutions will be 
   provided in other section (databases and standard formats), but these only partially solve the data 
   format issues.
 
   To store the resulting data from the read.table function we need a {\bf variable}. A variable is like 
-  a box whre you can store values in. To assign the output of the read.table function, we can use the 
+  a box where you can store values in. To assign the output of the read.table function, we can use the 
   <- assignment operator.
 \begin{verbatim} mydataset1 <- read.table("dataset1.txt") \end{verbatim}   
   To view the names of all files in a directory we can use the {\bf dir()} function list them. With 
@@ -452,8 +456,8 @@ take e.g. column 2 from file one and match that to e.g. column 4 in the other fi
   Creating nice images or summary statistics plots of your data is one of the main features of R. 
   Visual output (plots / images) can be saved by specifying an output file with a {\bf device}. 
   The device in our case is usually a image type such as: PNG, JPG, GIF, EPS. For bio informatics 
-  publications usually a combination of latex text files and eps figures are used. But for normal 
-  use jpg or png quality suffices. Fortunately there are not a lot of difference between the device 
+  publications usually a combination of latex text files and EPS figures are used. But for normal 
+  use JPG or PNG quality suffices. Fortunately there are not a lot of difference between the device 
   routines. To open a device you can simply call its name and add parameters to control things such as 
   height, width and number of pixels:
 \begin{verbatim} png(filename="myplot.png",bg="white")  \end{verbatim}
@@ -619,7 +623,7 @@ Packages). Some packages that might come in handy:
 \end{itemize}
 The descriptive statistics can be useful to get hands on with data (e.g. detect outliers, find batch effects). Additionally by 
 plotting the correlation between individual samples one can get an indication of the quality of the whole data set. There are 
-many ways to statistically test for e.g. Normalness of your data, but a quick look by eye will usually be just as informative.
+many ways to statistically test for e.g. Normality of your data, but a quick look by eye will usually be just as informative.
 The R language also contains a scala of modeling tools such as: Fitting and Testing of linear models, prediction, clustering 
 and machine learning. Functions that model data take a model function description, so lets take a look at an example. We create 
 $y$ holding a single response variables. Then we add a linear effect of 0.5 and a small amount of noise (y1) and do the same again 
@@ -638,13 +642,13 @@ estimatesy2
 We see that the lm function comes up with the parameter 0.5 as slope and 2.5 for the intercept of y1. We also show the way to quickly 
 get estimates for the first 10 values of function.
 \begin{figure}[ht]
-\subfigure[Good fit lineair model]{
+\subfigure[Good fit linear model]{
 <<fig=TRUE,echo=FALSE>>=
 plot(y1,col="blue",pch=20,main="Estimated regression line")
 lines(lm(y1~x)[[1]][1]+lm(y1~x)[[1]][2]*1:100,col="red",lwd=2)
 @
 }
-\subfigure[Bad fit lineair model]{
+\subfigure[Bad fit linear model]{
 <<fig=TRUE,echo=FALSE>>=
 plot(y2,col="blue",pch=20,main="Estimated regression line")
 lines(lm(y2~x)[[1]][1]+lm(y2~x)[[1]][2]*1:100,col="red",lwd=2)
