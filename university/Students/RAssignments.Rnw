@@ -86,11 +86,12 @@ Programming languages use data types to tell the CPU how many rows lights to use
 Also in R, data (text, labels, measurements, etc) is dived in specialized classes, this to optimize their 
 storage in terms of 0 and 1's that the computer uses internally.
 \begin{itemize}
-  \item[]{\bf null, NULL, NA, NAN, INF} Special cases in mathematics/programming (does not exist, exists but empty, unknown, not a number, infinite)
+  \item[]{\bf NULL, NA, NaN, Inf} Special cases in mathematics/programming (absent (not set) but not missing, missing, not a number, infinite)
   \item[]{\bf boolean} Value to represent a boolean (TRUE / FALSE)
   \item[]{\bf numeric} Numerical value (e.g. $0, 1, 0.25, pi$)
   \item[]{\bf character} String value (e.g. $"Dog", "House", "Bike"$ but also vectors of Strings)
-  \item[]{\bf factor} A factorial (also called a enum or category variable holds variables that group objects (e.g. Plot1, Plot2, Plot3)
+  \item[]{\bf numeric(0), character(0)} Numeric and character vectors that exist, but have length of 0
+  \item[]{\bf factor} A factorial (also called a enum or category variable holds variables that group objects (e.g. Plot1, Plot2, Plot3))
   \item[]{\bf vector} A list of one of the above classes, and items from a vector can be looked up using [i] (e.g. with $myvector[5]$ we get the 5th element)
   \item[]{\bf matrix} A matrix of one of the above classes and items from a matrix can be looked up using [r,c] (e.g. with $mymatrix[5,3]$ we get the element at the 5th row, 3rd column)
   \item[]{\bf list} A list of other types, and items from a list can be looked up using [[i]] (e.g. with $mylist[[5]]$ we get the 5th element)
@@ -102,13 +103,13 @@ want to be more efficient at storing a certain data. But let us first create som
 use start{\bf : }end to denote a sequence of numbers, or create a sequence by using the seq function.\\
 <<data1,eval=TRUE,echo=TRUE>>=
 1:10 #One to a hundred
-seq(1,50,4) #One to a five hundred stepping 4
+seq(1,50,4) #One to fifty stepping 4
 @
-To create an object of a string class, we can concatenate it together with a String value. String values are 
-surrounded by quotes ", also when R print them to the screen. If we concatenate a number and a string, the result 
-will be a single string with the string concatenated to the numeric value. This can be used to create e.g. names 
-for our objects/individuals. For this we have two functions {\bf cat} and {\bf paste}. When we supply a sequence 
-of values/strings {\bf cat} creates one big string while {\bf paste} will create a vector of strings. An example:
+To create an object of a string class, we can join it together with a String value. String values are 
+surrounded by quotes ", also when R print them to the screen. In programming, joining strings is called concatenation. 
+If we join a number and a string, the result will be a single string with the string concatenated to the numeric value. 
+This can be used to create e.g. names for our objects/individuals. For this we have two functions {\bf cat} and {\bf paste}. 
+When we supply a sequence of values/strings {\bf cat} creates one big string while {\bf paste} will create a vector of strings. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 cat("ind",1:10,sep=",")
 paste("ind",1:10,sep="")
@@ -121,17 +122,17 @@ sqrt((1+5)/4)
 matrix(0,3,5)
 @
 \subsection{Controlling a program}
-Controlling a program is done by executing an algorithm, best to be thought of as a cook receipt. The computer diligently follows 
-the steps and with each command manipulates the input data. These commands are written in the syntax of the programming language.
-Syntax differs from language to language, but algorithms should in theory not (but also do). Often algorithms are designed based on Design 
+Controlling a program is done by executing an algorithm, best to be thought of as a "cooking receipt". The computer diligently follows 
+the receipt and with each command manipulates the input data. These commands are written in the syntax of the programming language.
+Syntax differs from language to language, but algorithms should in theory not (but they often do). Algorithms are often designed based on Design 
 Patterns (Common down to earth logic stuff we see in real life e.g. the procedural steps to pay at a cash register (unload stuff,calculate 
 price, give money, get change) is in computer science known as the 'Transaction Design Pattern').
 The syntax of R is quite similar to a lot of known programming languages. A small overview:
 \begin{itemize}
   \item[]{\bf <-, =} Assigning results to a variable
-  \item[]{\bf if(5 < 7)} test to evaluate if a certain condition is TRUE or FALSE
+  \item[]{\bf if(5 < 7)} Test to evaluate if a certain condition is TRUE or FALSE
   \item[]{\bf for(x in 1:70)} Loop through the sequence specified in the for condition giving x the value of 1 to 70
-  \item[]{\bf apply(data,1 or 2,fun)} Apply the function 'fun' to the (1 = rows or 2 = columns) of the data
+  \item[]{\bf apply(data,1 or 2,fun)} Apply the function 'fun' to the (1 = rows, 2 = columns, c(1,2) = both) of the data
 \begin{verbatim} 
  data <- matrix(runif(50),10,5)
  apply(data,1,mean) #Mean values per row
@@ -147,8 +148,8 @@ The syntax of R is quite similar to a lot of known programming languages. A smal
 Control structures shape the flow of data through a program. Based on decision points we can take different paths based on a statement 
 being TRUE or FALSE. Programming creates small logical chunks (control statements and functions) to do things and then adds these chunks 
 together inside a program to perform a certain task. A simple example could be a regulator for a heater, IF the temperature in the room is 
-too low, the heater should be ON. IF the temperature is too high the cooler needs to be ON and the heater OFF. Basic descisions like this 
-can be used to build complex behaviours. This control flow plus the ability to storeresults in variables allow us to manipulate data, store 
+too low, the heater should be ON. IF the temperature is too high the cooler needs to be ON and the heater OFF. Basic decisions like this 
+can be used to build complex behaviours. This control flow plus the ability to store results in variables allow us to manipulate data, store 
 intermediate results and based on these intermediate results or user input perform a new task. An example:
 <<catpaste,eval=TRUE,echo=TRUE>>=
 numbers <- seq(1,50,4)
@@ -171,9 +172,9 @@ the text higher or lower accordingly.
   cat("Hello world\n") # \n : End the line
  } 
 \end{verbatim}
-This will print 100 times Hello World in a file, notice the \textbackslash n \textbackslash t 
+This will print 100 times Hello World in a file. Notice the \textbackslash n \textbackslash t -
 those are special characters. \textbackslash n means begin a new line, \textbackslash t denotes 
-a tab indentation. While we're at it: A bit of escaping. Lets say I want to print a ". However " 
+a tabulator indentation. While we are at it: A bit of escaping. Lets say I want to print a ". However " 
 normally is used to specify a string in R. But what if that string contains a ", well we can 
 simply escape it with a \textbackslash. So an example to print: "\textbackslash into a file we do:
 \begin{verbatim} 
@@ -189,9 +190,9 @@ Coding is like any research, one needs to be diligent and precise. This means st
 the logical flow of a program is visible at first glance. Also this implies well documented code, and adding comments 
 when things might be unclear to others.
 
-Furthermore it is common practice to exercise a kind of ownership. So people know who wrote the code and e.g. who is 
+Furthermore, it is a common practice to exercise a kind of ownership. So people know who wrote the code and e.g. who is 
 currently maintaining it. This might seem like a waste of time now, and it is. But when working with more 
-people on larger projects it is impossible to keep track of everything, and thus documentation becomes vital.
+people on larger projects it is impossible to keep track of everything unless the code is well documented.
 \\\\
 {\bf Assignments}
 \\
@@ -236,7 +237,7 @@ people on larger projects it is impossible to keep track of everything, and thus
 \section{R and data}
 \subsection{Loading data sets}
   Loading data sets is done with the functions read.table and read.csv. They are both similar in
-  the options they provide for loading data. but load.csv is generally faster by a factor of two to 
+  the options they provide for loading data. But load.csv is generally faster by a factor of two to 
   four in loading large data sets. An example to load filename.txt into R:
 
 \begin{verbatim} read.table("filename.txt") \end{verbatim}
@@ -257,7 +258,7 @@ people on larger projects it is impossible to keep track of everything, and thus
   sense of data format. 
 
   Parameters that can be used for this purpose are: {\bf header} - does the data contain column names, 
-  {\bf row.names} - same for row names, {\bf sep} - how does R need to split data, {\bf fill} - Should 
+  {\bf row.names} - same for row names, {\bf sep} - how does R need to split data, {\bf fill} - should 
   lines that are to short be padded. 
 
   It it a good idea to first open the data file in a text editor and check if there are any headers, 
