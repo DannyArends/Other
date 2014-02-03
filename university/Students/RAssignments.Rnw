@@ -671,7 +671,7 @@ For this we can use a simple two sided t.test the 0-hypothesis is that both dist
 <<lmexample,eval=TRUE,echo=TRUE>>=
 r1 <- runif(100)*5
 r2 <- runif(100)*5
-t.test(r1,r2)$p.value #Above 0.05 so we accept the 0-hypothesis
+t.test(r1,r2) #Above 0.05 so we accept the 0-hypothesis
 @
   {\bf Assignments}\\
   {\bf A6.0} At each marker (read the table from genotypes.txt) list the individuals in each group (1 and 2)\\
@@ -721,7 +721,8 @@ assuming perfect knowledge.
 
 \newpage
 \section{R and the WWW}
-  To come soon..
+  We can interact with web pages in an easy way using the Rcurl package.
+
 \subsection{RCurl}
   RCurl adds the ability to browse and interact with web-pages. This gives R the ability to screen scrape data from the internet. This is a commonly used technique 
   when data from databases with poor API's needs to be incorporated into an analysis. Query's are send to the database containing 'Identifiers' (e.g. common names, 
@@ -731,22 +732,34 @@ assuming perfect knowledge.
   \\
   \\
   {\bf Assignments}\\
-  {\bf A8.0} Load http://www.google.com using the RCurl package\\
+  {\bf A8.0} Install the Rcurl package and load http://www.google.com using the getURL function\\
   {\bf A8.1} Create a function to retrieve the Google homepage image and save it to the hard drive\\
-  {\bf A8.2} Create a function post a searchterm to Google\\
+  {\bf A8.2} Create a function that posts a searchterm to Google and saves the resulting HTML file to disk\\
   {\bf A8.3} Screenscape the return of A8.2 and parse out the hyperlinks google returns\\
+
 \subsection{Databases}
+  To come soon..
+
+\subsection{Show your work online}
   To come soon..
 
 \newpage
 \section{R Libraries and packaging}
-Addtional options can be specified via the command line to install additional packages, or compile your own:
+\subsection{Creating scripts}
+  To come soon..
+\subsection{Packages}
+  Addtional options can be specified via the command line to install additional packages, or compile your own:
 \begin{verbatim}
 R CMD INSTALL <packagename>
 R CMD BUILD <packagename> --binary --force
 R CMD CHECK <packagename>
 \end{verbatim}
 \subsection*{Package structure}
+R packages are defined in a rigid structure to harmonize across all different R versions and platforms. 
+Additionally the structure provides a nice self contained unit of code and documentation, which can be 
+easily ported/updated when a new version of R comes out. This allows R developers to maintain R and Rgui, 
+while the community maintains the different packages. When R versions are updated, developers are 
+responsible themselves for creating an updated version of their package for the new version.
 \begin{itemize}
 \item Directory: data, contains data files supplied with the package
 \item Directory: man, contains manuals describing the R functions
@@ -755,10 +768,12 @@ R CMD CHECK <packagename>
 \item Directory: tests, Additional tests to be executed (not in manuals)
 \item File: DESCRIPTION, package description and dependencies
 \end{itemize}
-
+For more on creating packages and how to submit them to CRAN just use a search engine, there are many 
+resources out there on best practices when building an R package.
 \newpage
 \section{R cheat sheet}
-TO COPY
+The cheat sheet is available at:\\
+\url{http://www.dannyarends.nl/pdf/Rcheats.pdf}
 
 \newpage
 \section{Some examples}
